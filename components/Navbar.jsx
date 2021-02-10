@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import LanguageSetter from "./NavbarTools/LanguageSetter";
 import CurrencySetter from "./NavbarTools/CurrencySetter";
 import Login from "./NavbarTools/Login";
@@ -7,7 +7,7 @@ import UserMenu from "./NavbarTools/UserMenu";
 import Agent from "./NavbarTools/Agent";
 import Cart from "./NavbarTools/Cart";
 
-export default function Navbar({ cartHandler }) {
+export default function Navbar({ cartHandler, cartBadge }) {
   return (
     <div className="hidden sm:block">
       <div className="bg-gray-900  w-full h-24 flex flex-row justify-between items-center">
@@ -34,7 +34,7 @@ export default function Navbar({ cartHandler }) {
           <div className="flex flex-row justify-end items-center mr-2">
             <Agent />
             <div className="cursor-pointer mr-4" onClick={cartHandler}>
-              <Cart />
+              <Cart badge={cartBadge} />
             </div>
           </div>
         </div>

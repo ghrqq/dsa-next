@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function FilterLine() {
+export default function FilterLine({ viewHandler }) {
   return (
     <div className="block rounded-3xl bg-gray-100 h-auto ">
       <div className="flex flex-row justify-center items-center flex-wrap sm:flex-nowrap  mx-auto text-xs">
@@ -42,18 +42,22 @@ export default function FilterLine() {
             width={48}
             alt="Order by Price"
           />
-          <Image
-            src="/icons/list.png"
-            height={48}
-            width={48}
-            alt="Toggle to List View"
-          />
-          <Image
-            src="/icons/grid.png"
-            height={48}
-            width={48}
-            alt="Toggle to Grid View"
-          />
+          <button onClick={viewHandler}>
+            <Image
+              src="/icons/list.png"
+              height={48}
+              width={48}
+              alt="Toggle to List View"
+            />
+          </button>
+          <button onClick={viewHandler}>
+            <Image
+              src="/icons/grid.png"
+              height={48}
+              width={48}
+              alt="Toggle to Grid View"
+            />
+          </button>
         </div>
         <div className="w-full flex flex-row justify-evenly items-center pb-2 sm:pb-0">
           <button className="bg-red-400 text-gray-100 p-1 rounded-full w-1/3 ">

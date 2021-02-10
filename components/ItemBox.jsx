@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
 
-export default function ItemBox() {
+export default function ItemBox({ item }) {
+  const { brand, price, origin, description, code, imgpath } = item;
+
   return (
     <div className="  h-96 w-64 rounded-3xl p-2 bg-gray-200">
       <div className="flex flex-col justify-evenly items-center">
@@ -31,15 +33,13 @@ export default function ItemBox() {
               alt="Origin"
             />
           </div>
-          <div className="text-lg">17894-16841</div>
+          <div className="text-lg">{code}</div>
         </div>
-        <div className="text-lg text-center font-medium">Brand</div>
-        <div className="text-xs text-justify p-2">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        </div>
+        <div className="text-lg text-center font-medium">{brand}</div>
+        <div className="text-xs text-justify p-2">{description}</div>
         <div className="border-t-1 border-gray-900 flex flex-col w-full justify-evenly items-center">
           <div className=" text-xs">
-            <div className="line-through inline-block">17.90</div>
+            <div className="line-through inline-block">{price}</div>
             <div className="text-red-400 inline-block ml-4 no-underline text-xl">
               8%
             </div>

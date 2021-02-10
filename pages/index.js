@@ -8,7 +8,10 @@ import ItemList from "../components/ItemList";
 import ItemBox from "../components/ItemBox";
 import FilterLine from "../components/FilterLine";
 import Cart from "../components/Cart";
+import SingleItem from "../components/SingleItem";
 import React, { useState } from "react";
+import Layout from "../themes/Layout";
+import ItemDisplayer from "../components/ItemDisplayer";
 
 export default function Home() {
   const [isCartHidden, setisCartHidden] = useState(true);
@@ -18,23 +21,12 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full">
+    <Layout>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="w-full">
-        <Navbar cartHandler={cartClickHandler} />
-        <NavbarS cartHandler={cartClickHandler} />
-      </div>
-      {/* <div className="w-full h-auto md:h-screen  flex flex-col sm:flex-row justify-evenly items-center">
-        <CategoryBox />
 
-        <NewsDisplay />
-      </div> */}
-      <div className={isCartHidden ? "hidden" : null}>
-        <Cart />
-      </div>
       <div className="flex flex-col w-full justify-center items-center">
         <div className="sm:sticky top-0 z-30 border-1 border-dotted ">
           <FilterLine />
@@ -45,7 +37,10 @@ export default function Home() {
               <CategoryBox />
             </div>
           </div>
-          <div className="flex flex-col justify-evenly mx-auto py-4 items-center space-y-4 ">
+
+          <ItemDisplayer />
+
+          {/* <div className="flex flex-col justify-evenly mx-auto py-4 items-center space-y-4 ">
             <ItemList />
             <ItemList />
             <ItemList />
@@ -61,7 +56,10 @@ export default function Home() {
             <ItemList />
             <ItemList />
             <ItemList />
-          </div>
+          </div> */}
+          {/* <div className="flex flex-row justify-evenly items-center space-y-4 flex-wrap">
+            <SingleItem />
+          </div> */}
 
           {/* <div className="flex flex-row justify-evenly items-center space-y-4 flex-wrap">
             <ItemBox />
@@ -76,6 +74,6 @@ export default function Home() {
           </div> */}
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }

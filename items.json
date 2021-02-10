@@ -1,0 +1,35 @@
+[
+  {
+    "brand": "X-Machinery",
+    "price": "34.90",
+    "origin": "Russia",
+    "description": "A tiny little piece that fixes your car.",
+    "code": "15146-58761",
+    "imgpath": "/img/15146-58761.jpg",
+    "category": "electric",
+    "subcategory": "light",
+    "compatible": ["#M4R", "RAV4#3", "RAV4#2", "AZ3LX"]
+  },
+  {
+    "brand": "O-Brand",
+    "price": "23.90",
+    "origin": "Ukraine",
+    "description": "A tiny little piece that fixes your car even more.",
+    "code": "15126-51391",
+    "imgpath": "/img/15126-51391.jpg",
+    "category": "electric",
+    "subcategory": "light",
+    "compatible": ["RAV4#3", "RAV4#2"]
+  },
+  {
+    "brand": "Toyota",
+    "price": "49.90",
+    "origin": "Japan",
+    "description": "A tiny little piece that fixes your car even more and more.",
+    "code": "12478-51391",
+    "imgpath": "/img/12478-51391.jpg",
+    "category": "transmission",
+    "subcategory": "box",
+    "compatible": ["RAV4#3", "RAAV4#2", "#M4R"]
+  }
+]

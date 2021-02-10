@@ -7,7 +7,7 @@ import Register from "./NavbarTools/Register";
 import UserMenu from "./NavbarTools/UserMenu";
 import Cart from "./NavbarTools/Cart";
 
-export default function NavbarS({ cartHandler }) {
+export default function NavbarS({ cartHandler, cartBadge }) {
   const [isHidden, setisHidden] = useState(true);
 
   return (
@@ -21,7 +21,7 @@ export default function NavbarS({ cartHandler }) {
         </div>
         <LanguageSetter />
         <div className="cursor-pointer" onClick={cartHandler}>
-          <Cart />
+          <Cart badge={cartBadge} />
         </div>
       </div>
       <div className={isHidden ? "hidden" : null}>
