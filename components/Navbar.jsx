@@ -7,10 +7,10 @@ import UserMenu from "./NavbarTools/UserMenu";
 import Agent from "./NavbarTools/Agent";
 import Cart from "./NavbarTools/Cart";
 
-export default function Navbar() {
+export default function Navbar({ cartHandler }) {
   return (
     <div className="hidden sm:block">
-      <div className="bg-gray-900  w-screen h-24 flex flex-row justify-between items-center">
+      <div className="bg-gray-900  w-full h-24 flex flex-row justify-between items-center">
         <div className="flex flex-row justify-start items-center">
           <div className="logo text-4xl text-center justify-self-start inline-block text-gray-100 p-2">
             DSA <br /> AUTO
@@ -26,14 +26,16 @@ export default function Navbar() {
           <LanguageSetter />
         </div>
       </div>
-      <div className="bg-gray-600  w-screen h-16">
+      <div className="bg-gray-600  w-full h-16">
         <div className=" h-full flex flex-row justify-between items-center">
           {/* <Login /> */}
           <UserMenu />
           {/* <Register /> */}
           <div className="flex flex-row justify-end items-center mr-2">
             <Agent />
-            <Cart />
+            <div className="cursor-pointer mr-4" onClick={cartHandler}>
+              <Cart />
+            </div>
           </div>
         </div>
       </div>

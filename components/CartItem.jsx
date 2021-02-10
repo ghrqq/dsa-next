@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function CartItem({ count }) {
   return (
-    <div className="bg-gray-50 flex flex-col sm:flex-row h-20 justify-evenly shadow-2xl  items-center my-2  space-x-4">
+    <div className="bg-gray-50 flex flex-wrap flex-row h-auto  justify-evenly shadow-2xl  items-center my-2  space-x-4">
       <div className="w-16 h-16 bg-red-400">IMG</div>
       {/* <div className="hidden sm:flex h-27 flex-col justify-evenly items-center bg-gray-100">
         <div>

@@ -7,36 +7,45 @@ import Filter from "../components/Filter";
 import ItemList from "../components/ItemList";
 import ItemBox from "../components/ItemBox";
 import FilterLine from "../components/FilterLine";
-import CartContainer from "../components/CartContainer";
+import Cart from "../components/Cart";
+import React, { useState } from "react";
 
 export default function Home() {
+  const [isCartHidden, setisCartHidden] = useState(true);
+
+  const cartClickHandler = () => {
+    setisCartHidden(!isCartHidden);
+  };
+
   return (
-    <div className="w-screen">
+    <div className="w-full">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="w-full">
-        <Navbar />
-        <NavbarS />
+        <Navbar cartHandler={cartClickHandler} />
+        <NavbarS cartHandler={cartClickHandler} />
       </div>
       {/* <div className="w-full h-auto md:h-screen  flex flex-col sm:flex-row justify-evenly items-center">
         <CategoryBox />
 
         <NewsDisplay />
       </div> */}
-      <CartContainer />
-      <div className=" flex flex-col justify-center items-center">
+      <div className={isCartHidden ? "hidden" : null}>
+        <Cart />
+      </div>
+      <div className="flex flex-col w-full justify-center items-center">
         <div className="sm:sticky top-0 z-30 border-1 border-dotted ">
           <FilterLine />
         </div>
-        <div className="w-full  h-auto  flex flex-col sm:flex-row justify-evenly items-start">
-          <div className="sm:sticky sm:right-4 sm:top-28 mt-0 mx-auto ">
+        <div className="w-auto  h-auto  flex flex-col sm:flex-row justify-evenly  items-start">
+          <div className="sm:sticky sm:left-4 sm:top-28 mt-0 mx-auto ">
             <div className="flex flex-col  justify-center items-center space-x-4 ">
               <CategoryBox />
             </div>
           </div>
-          <div className="flex flex-col justify-evenly mx-auto py-4 items-center space-y-4">
+          <div className="flex flex-col justify-evenly mx-auto py-4 items-center space-y-4 ">
             <ItemList />
             <ItemList />
             <ItemList />
