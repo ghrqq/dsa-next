@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function ItemBox({ item }) {
+export default function ItemBox({ item, adder }) {
   const { brand, price, origin, description, code, imgpath } = item;
 
   return (
@@ -45,7 +45,10 @@ export default function ItemBox({ item }) {
             </div>
           </div>
           <div className="text-3xl text-green-400">16.60</div>
-          <div className="text-gray-100 bg-green-400 w-5/6 rounded-full text-center p-2">
+          <div
+            className="text-gray-100 bg-green-400 w-5/6 rounded-full text-center p-2"
+            onClick={() => adder(item)}
+          >
             ADD
           </div>
         </div>

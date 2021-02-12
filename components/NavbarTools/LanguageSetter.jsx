@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Image from "next/image";
-import { ConfigContext } from "../../themes/Layout";
+import { ConfigContext } from "../../pages/_app";
 
 export default function LanguageSetter() {
   const [config, setconfig] = useContext(ConfigContext);

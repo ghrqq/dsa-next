@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ConfigContext } from "../../themes/Layout";
+import { ConfigContext } from "../../pages/_app";
 
 export default function CurrencySetter() {
   const [config, setconfig] = useContext(ConfigContext);

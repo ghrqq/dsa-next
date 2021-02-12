@@ -3,54 +3,39 @@ import Navbar from "../components/Navbar";
 import NavbarS from "../components/NavbarS";
 import Cart from "../components/Cart";
 import items from "../items.json";
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useContext } from "react";
 import Footer from "../components/Footer";
 import { cartBuilder, cartItemIncrementer } from "../tools/cartTools";
-
-export const ConfigContext = React.createContext([]);
-export const CartContext = React.createContext([]);
+import { ConfigContext, CartContext } from "../pages/_app";
 
 export default function Layout({ children }) {
   const [isCartHidden, setisCartHidden] = useState(true);
-  const [cart, setcart] = useState([]);
+  const [cart, setcart, cartAdder, cartLength] = useContext(CartContext);
 
-  const [config, setconfig] = useState({
-    lang: "en",
-    currency: "usd",
-    user: true,
-  });
+  const [config, setconfig] = useContext(ConfigContext);
 
   const cartClickHandler = () => {
     setisCartHidden(!isCartHidden);
   };
 
-  useEffect(() => {
-    const buildedCart = cartBuilder(items);
-    setcart(buildedCart);
-  }, [items]);
-
   return (
-    <ConfigContext.Provider value={[config, setconfig]}>
-      <CartContext.Provider value={[cart, setcart]}>
-        <div className="w-full z-0">
-          <Head>
-            <title>Create Next App</title>
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-          <div className="w-full">
-            <Navbar cartBadge={items.length} cartHandler={cartClickHandler} />
-            <NavbarS cartBadge={items.length} cartHandler={cartClickHandler} />
-          </div>
+    <div className="w-full z-0">
+      <Head>
+        <title>Create Next App</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="w-full">
+        <Navbar cartBadge={cartLength} cartHandler={cartClickHandler} />
+        <NavbarS cartBadge={cart.length} cartHandler={cartClickHandler} />
+      </div>
 
-          <div className={isCartHidden ? "hidden" : null}>
-            <Cart items={items} />
-          </div>
+      <div className={isCartHidden ? "hidden" : null}>
+        <Cart items={items} />
+      </div>
 
-          <main>{children}</main>
+      <main>{children}</main>
 
-          <Footer />
-        </div>
-      </CartContext.Provider>
-    </ConfigContext.Provider>
+      <Footer />
+    </div>
   );
 }

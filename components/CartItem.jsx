@@ -52,7 +52,9 @@ export default function CartItem({ count, item, calc, disp }) {
             </label>
             <div
               className="w-full text-gray-900 font-extrabold text-center align-middle cursor-pointer"
-              onClick={() => setqty(qty - 1)}
+              onClick={() => {
+                qty > 0 ? setqty(qty - 1) : null;
+              }}
             >
               -
             </div>
@@ -61,7 +63,8 @@ export default function CartItem({ count, item, calc, disp }) {
           <div className="flex flex-col items-center w-1/5 px-2 justify-evenly ">
             <div>TOTAL</div>
             <div className="text-xl font-semibold">
-              {price * qty} <span className="text-base font-normal">USD</span>
+              {(price * qty).toFixed(2)}{" "}
+              <span className="text-base font-normal">USD</span>
             </div>
           </div>
         </div>

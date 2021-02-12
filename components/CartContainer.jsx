@@ -1,14 +1,21 @@
 import React, { useState, useContext, useEffect } from "react";
 import CartItem from "./CartItem";
 import items from "../items.json";
-import { CartContext } from "../themes/Layout";
+import { CartContext } from "../pages/_app";
 
 export default function CartContainer({ stepper }) {
   const [total, settotal] = useState(0);
-  const [cart, setcart] = useContext(CartContext);
+  const [cart, setcart, cartAdder, cartLength, setcartLength] = useContext(
+    CartContext
+  );
 
   // To collect statistical information
   const [count, setcount] = useState(0);
+
+  const handleCartEmpty = () => {
+    setcart([]);
+    setcartLength(0);
+  };
 
   useEffect(() => {
     let val = 0;
@@ -42,7 +49,10 @@ export default function CartContainer({ stepper }) {
       <div className="flex flex-col sm:flex-row justify-between w-9/12 mr-4 items-center sm:mb-96 bg-gray-600 text-center">
         <div className="flex flex-col sm:flex-row justify-start items-center w-full">
           <div className="flex flex-col justify-evenly items-center w-36 px-2">
-            <div className="bg-red-400 w-full text-gray-100 px-2 py-1 rounded-full my-1">
+            <div
+              className="bg-red-400 w-full text-gray-100 px-2 py-1 rounded-full my-1"
+              onClick={() => handleCartEmpty()}
+            >
               EMPTY CART
             </div>
             <div className="bg-green-400 w-full text-gray-100 px-2 py-1 rounded-full my-1">
