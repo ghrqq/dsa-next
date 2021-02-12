@@ -1,51 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function CartItem({ count }) {
+export default function CartItem({ count, item, calc, disp }) {
+  const { brand, price, origin, description, code, imgpath, quantity } = item;
+  const [qty, setqty] = useState(1);
+
+  useEffect(() => {
+    calc(code, qty);
+  }, [qty]);
+
+  const qtyHandler = (direction) => {
+    if (direction === "-1") {
+    }
+  };
+
   return (
-    <div className="bg-gray-50 flex flex-wrap flex-row h-auto  justify-evenly shadow-2xl  items-center my-2  space-x-4">
+    <div className="bg-gray-500 flex flex-wrap flex-row h-auto  justify-evenly shadow-2xl  items-center my-2  space-x-4">
       <div className="w-16 h-16 bg-red-400">IMG</div>
-      {/* <div className="hidden sm:flex h-27 flex-col justify-evenly items-center bg-gray-100">
-        <div>
-          <Image
-            src="/icons/check.png"
-            width={24}
-            height={24}
-            alt="Verified producer."
-          />
-        </div>
-        <div>
-          <Image
-            src="/icons/fast.png"
-            width={24}
-            height={24}
-            alt="Fast delivery."
-          />
-        </div>{" "}
-        <div>
-          <Image src="/icons/russia.png" width={24} height={24} alt="Origin" />
-        </div>
-      </div> */}
-      <div className="flex flex-col justify-evenly items-center  ">
+      <div className="flex flex-col justify-evenly items-center w-3/6 ">
         <div className="space-x-2">
-          <div className="inline-block font-medium text-xs">Some Brand</div>
-          <div className="inline-block text-base">13547-18864</div>
+          <div className="inline-block font-medium text-xs">{brand}</div>
+          <div className="inline-block text-base">{code}</div>
         </div>
 
-        <div className="text-xs">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-        </div>
+        <div className="text-xs">{description}</div>
       </div>
 
       <div className="flex flex-col justify-evenly items-center p-4 ">
-        <div className="text-xs line-through">18.80</div>
+        <div className="text-xs line-through">{price} </div>
         <div className="text-xl text-green-400 ">17.30</div>
         <div className="text-xs">USD</div>
       </div>
       {count === true ? (
         <div className="flex flex-row justify-evenly items-center text-center ">
           <div className="h-full w-12 flex flex-col justify-center items-center">
-            <div className="w-full text-gray-900 font-extrabold text-center align-middle">
+            <div
+              className="w-full text-gray-900 font-extrabold text-center align-middle cursor-pointer"
+              onClick={() => setqty(qty + 1)}
+            >
               +
             </div>
 
@@ -54,18 +46,22 @@ export default function CartItem({ count }) {
                 className="inline-block px-2 w-full align-middle border-2 text-center"
                 type="number"
                 min="0"
-                defaultValue={1}
+                value={qty}
+                onChange={(e) => setqty(e.target.value)}
               />
             </label>
-            <div className="w-full text-gray-900 font-extrabold text-center align-middle">
+            <div
+              className="w-full text-gray-900 font-extrabold text-center align-middle cursor-pointer"
+              onClick={() => setqty(qty - 1)}
+            >
               -
             </div>
           </div>
 
-          <div className="flex flex-col items-center px-2 justify-evenly ">
+          <div className="flex flex-col items-center w-1/5 px-2 justify-evenly ">
             <div>TOTAL</div>
             <div className="text-xl font-semibold">
-              18.49 <span className="text-base font-normal">USD</span>
+              {price * qty} <span className="text-base font-normal">USD</span>
             </div>
           </div>
         </div>

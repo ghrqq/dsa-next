@@ -6,6 +6,7 @@ import Register from "./NavbarTools/Register";
 import UserMenu from "./NavbarTools/UserMenu";
 import Agent from "./NavbarTools/Agent";
 import Cart from "./NavbarTools/Cart";
+import Link from "next/link";
 
 export default function Navbar({ cartHandler, cartBadge }) {
   return (
@@ -16,8 +17,12 @@ export default function Navbar({ cartHandler, cartBadge }) {
             DSA <br /> AUTO
           </div>
           <div className="text-4xl pl-4 text-center flex flex-row items-center justify-center text-gray-100 ">
-            <div className="inline-block pl-4 align-middle">Home</div>
-            <div className="inline-block pl-4 align-middle">Search</div>
+            <div className="inline-block  pl-4 align-middle">
+              <Link href="/">Home</Link>
+            </div>
+            <div className="inline-block pl-4 align-middle">
+              <Link href="/search">Search</Link>
+            </div>
             <div className="inline-block pl-4 align-middle">News</div>
           </div>
         </div>

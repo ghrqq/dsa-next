@@ -28,9 +28,9 @@ export default function Home() {
       </Head>
 
       <div className="flex flex-col w-full justify-center items-center">
-        <div className="sm:sticky top-0 z-30 border-1 border-dotted ">
+        {/* <div className="sm:sticky top-0 z-30 border-1 border-dotted ">
           <FilterLine />
-        </div>
+        </div> */}
         <div className="w-auto  h-auto  flex flex-col sm:flex-row justify-evenly  items-start">
           <div className="sm:sticky sm:left-4 sm:top-28 mt-0 mx-auto ">
             <div className="flex flex-col  justify-center items-center space-x-4 ">

@@ -6,6 +6,7 @@ import Login from "./NavbarTools/Login";
 import Register from "./NavbarTools/Register";
 import UserMenu from "./NavbarTools/UserMenu";
 import Cart from "./NavbarTools/Cart";
+import Link from "next/link";
 
 export default function NavbarS({ cartHandler, cartBadge }) {
   const [isHidden, setisHidden] = useState(true);
@@ -27,8 +28,12 @@ export default function NavbarS({ cartHandler, cartBadge }) {
       <div className={isHidden ? "hidden" : null}>
         <div className="h-screen flex flex-col bg-yellow-300 text-gray-900 space-y-6">
           <div className="text-gray-900 text-xl">
-            <div className="mx-auto text-center p-4 align-middle">Home</div>
-            <div className="mx-auto text-center p-4 align-middle">Search</div>
+            <div className="mx-auto text-center p-4 align-middle">
+              <Link href="/">Home</Link>
+            </div>
+            <div className="mx-auto text-center p-4 align-middle">
+              <Link href="/search">Search</Link>
+            </div>
             <div className="mx-auto text-center p-4 align-middle">News</div>
           </div>
           <Agent />
