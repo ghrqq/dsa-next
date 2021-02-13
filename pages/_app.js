@@ -7,12 +7,22 @@ export const CartContext = React.createContext([]);
 function MyApp({ Component, pageProps }) {
   const [cart, setcart] = useState([]);
   const [cartLength, setcartLength] = useState(0);
+  const [lang, setlang] = useState("en");
+  const [currency, setcurrency] = useState("USD");
+  const [rate, setrate] = useState(23.8);
 
   const [config, setconfig] = useState({
     lang: "en",
-    currency: "usd",
+    currency: "USD",
+    currencyRate: 23.8,
     user: true,
   });
+
+  const configure = (con, val) => {
+    let temp = config;
+    temp[con] = val;
+    setconfig(temp);
+  };
 
   const cartAdder = (product) => {
     let tempArr = cart;
@@ -31,7 +41,9 @@ function MyApp({ Component, pageProps }) {
   };
 
   return (
-    <ConfigContext.Provider value={[config, setconfig]}>
+    <ConfigContext.Provider
+      value={[lang, setlang, currency, setcurrency, rate]}
+    >
       <CartContext.Provider
         value={[cart, setcart, cartAdder, cartLength, setcartLength]}
       >

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import CartItem from "./CartItem";
 import items from "../items.json";
-import { CartContext } from "../pages/_app";
+import { CartContext, ConfigContext } from "../pages/_app";
 
 export default function CartContainer({ stepper }) {
   const [total, settotal] = useState(0);
@@ -9,6 +9,9 @@ export default function CartContainer({ stepper }) {
     CartContext
   );
 
+  const [lang, setlang, currency, setcurrency, rate] = useContext(
+    ConfigContext
+  );
   // To collect statistical information
   const [count, setcount] = useState(0);
 
@@ -61,7 +64,12 @@ export default function CartContainer({ stepper }) {
           </div>
         </div>
         <div className="flex flex-col justify-between my-4 items-center">
-          <div className="text-gray-100 mr-4 my-2 text-3xl">{total} USD</div>
+          <div className="text-gray-100 mr-4 my-2 text-3xl">
+            {currency === "USD"
+              ? Number(total / rate).toFixed(2)
+              : Number(total).toFixed(2)}{" "}
+            {currency === "USD" ? "USD" : "UAH"}
+          </div>
           <div
             className="bg-green-400 h-full my-2 mr-4 text-2xl text-gray-100 px-10  py-2 rounded-full"
             onClick={() => stepper(+1)}

@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
+import { ConfigContext } from "../pages/_app";
 
 export default function CartItem({ count, item, calc, disp }) {
   const { brand, price, origin, description, code, imgpath, quantity } = item;
   const [qty, setqty] = useState(1);
+  const [lang, setlang, currency, setcurrency, rate] = useContext(
+    ConfigContext
+  );
 
   useEffect(() => {
     calc(code, qty);
@@ -27,9 +31,13 @@ export default function CartItem({ count, item, calc, disp }) {
       </div>
 
       <div className="flex flex-col justify-evenly items-center p-4 ">
-        <div className="text-xs line-through">{price} </div>
+        <div className="text-xs line-through">
+          {currency === "USD"
+            ? Number(price / rate).toFixed(2)
+            : Number(price).toFixed(2)}{" "}
+        </div>
         <div className="text-xl text-green-400 ">17.30</div>
-        <div className="text-xs">USD</div>
+        <div className="text-xs">{currency}</div>
       </div>
       {count === true ? (
         <div className="flex flex-row justify-evenly items-center text-center ">
@@ -63,8 +71,10 @@ export default function CartItem({ count, item, calc, disp }) {
           <div className="flex flex-col items-center w-1/5 px-2 justify-evenly ">
             <div>TOTAL</div>
             <div className="text-xl font-semibold">
-              {(price * qty).toFixed(2)}{" "}
-              <span className="text-base font-normal">USD</span>
+              {currency === "USD"
+                ? Number((price * qty) / rate).toFixed(2)
+                : Number(price * qty).toFixed(2)}{" "}
+              <span className="text-base font-normal">{currency}</span>
             </div>
           </div>
         </div>
