@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function ItemBox({ item, adder, rate, currency }) {
+export default function ItemBox({ item, adder, rate, currency, sale }) {
   const { brand, price, origin, description, code, imgpath } = item;
 
   return (
@@ -46,17 +46,19 @@ export default function ItemBox({ item, adder, rate, currency }) {
                 : Number(price).toFixed(2)}
             </div>
             <div className="text-red-400 inline-block ml-4 no-underline text-xl">
-              8%
+              {sale * 100}%
             </div>
           </div>
           <div className="text-3xl inline-block align-middle text-green-400">
-            16.60{" "}
+            {currency === "USD"
+              ? Number(price / rate - (price / rate) * sale).toFixed(2)
+              : Number(price - price * sale).toFixed(2)}
             <div className="text-xs text-gray-900 align-middle inline-block">
               {currency === "USD" ? "USD" : "UAH"}
             </div>
           </div>
           <div
-            className="text-gray-100 bg-green-400 w-5/6 rounded-full text-center p-2"
+            className="text-gray-100 bg-green-400 w-5/6 rounded-full text-center p-2 cursor-pointer"
             onClick={() => adder(item)}
           >
             ADD

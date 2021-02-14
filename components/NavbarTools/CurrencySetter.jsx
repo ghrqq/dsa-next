@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import { ConfigContext } from "../../pages/_app";
+import { ConfigContext, UserContext } from "../../pages/_app";
 
 export default function CurrencySetter() {
+  const [user, setuser] = useContext(UserContext);
   const [lang, setlang, currency, setcurrency, rate] = useContext(
     ConfigContext
   );
@@ -12,7 +13,7 @@ export default function CurrencySetter() {
         className="bg-gray-700"
         name=""
         id=""
-        defaultValue={currency}
+        // defaultValue={user.currency ? user.currency : currency}
         // value={config.currency}
         onChange={(e) => setcurrency(e.target.value)}
       >

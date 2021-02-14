@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import CartItem from "./CartItem";
 import items from "../items.json";
-import { CartContext, ConfigContext } from "../pages/_app";
+import { CartContext, ConfigContext, UserContext } from "../pages/_app";
 
 export default function CartContainer({ stepper }) {
   const [total, settotal] = useState(0);
@@ -12,6 +12,8 @@ export default function CartContainer({ stepper }) {
   const [lang, setlang, currency, setcurrency, rate] = useContext(
     ConfigContext
   );
+
+  const [user, setuser] = useContext(UserContext);
   // To collect statistical information
   const [count, setcount] = useState(0);
 
@@ -45,7 +47,13 @@ export default function CartContainer({ stepper }) {
       <div className="w-9/12 mr-4 h-96 overflow-scroll p-8 bg-gray-50 ">
         {cart.map((item) => {
           return (
-            <CartItem count={true} key={item.code} item={item} calc={adder} />
+            <CartItem
+              count={true}
+              key={item.code}
+              item={item}
+              calc={adder}
+              sale={user.sale}
+            />
           );
         })}
       </div>
@@ -66,8 +74,8 @@ export default function CartContainer({ stepper }) {
         <div className="flex flex-col justify-between my-4 items-center">
           <div className="text-gray-100 mr-4 my-2 text-3xl">
             {currency === "USD"
-              ? Number(total / rate).toFixed(2)
-              : Number(total).toFixed(2)}{" "}
+              ? Number(total / rate - (total / rate) * user.sale).toFixed(2)
+              : Number(total - total * user.sale).toFixed(2)}{" "}
             {currency === "USD" ? "USD" : "UAH"}
           </div>
           <div

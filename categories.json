@@ -1,0 +1,41 @@
+[
+  {
+    "name": "accessory",
+    "children": ["stickers", "tires"]
+  },
+  {
+    "name": "spare parts",
+    "children": ["top", "bottom", "window", "others"]
+  },
+  {
+    "name": "engine",
+    "children": ["piston", "cap", "fan", "others"]
+  },
+  {
+    "name": "electric",
+    "children": [
+      "light",
+      "cable",
+      "socket",
+      "others",
+      "light",
+      "cable",
+      "socket",
+      "others"
+    ]
+  },
+  {
+    "name": "transmission",
+    "children": ["box", "distributor", "stick", "others"]
+  },
+  {
+    "name": "oil & liquid",
+    "children": [
+      "engine oil",
+      "brake liquid",
+      "window liquid",
+      "anti-freeze",
+      "others"
+    ]
+  }
+]

@@ -3,7 +3,7 @@ import FilterLine from "./FilterLine";
 import ItemList from "./ItemList";
 import ItemBox from "./ItemBox";
 import items from "../items.json";
-import { CartContext, ConfigContext } from "../pages/_app";
+import { CartContext, ConfigContext, UserContext } from "../pages/_app";
 
 export default function ItemDisplayer() {
   const [isList, setisList] = useState(false);
@@ -11,6 +11,8 @@ export default function ItemDisplayer() {
   const [lang, setlang, currency, setcurrency, rate] = useContext(
     ConfigContext
   );
+
+  const [user, setuser] = useContext(UserContext);
 
   const setView = () => {
     setisList(!isList);
@@ -27,6 +29,7 @@ export default function ItemDisplayer() {
               adder={cartAdder}
               rate={rate}
               currency={currency}
+              sale={user.sale}
             />
           ))}
         </div>
@@ -38,6 +41,7 @@ export default function ItemDisplayer() {
               adder={cartAdder}
               rate={rate}
               currency={currency}
+              sale={user.sale}
             />
           ))}{" "}
         </div>

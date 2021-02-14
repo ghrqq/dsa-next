@@ -1,8 +1,12 @@
 import "../styles/globals.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+// DEV DEP
+import userJSON from "../user.json";
 
 export const ConfigContext = React.createContext([]);
 export const CartContext = React.createContext([]);
+export const UserContext = React.createContext([]);
 
 function MyApp({ Component, pageProps }) {
   const [cart, setcart] = useState([]);
@@ -10,12 +14,18 @@ function MyApp({ Component, pageProps }) {
   const [lang, setlang] = useState("en");
   const [currency, setcurrency] = useState("USD");
   const [rate, setrate] = useState(23.8);
+  const [user, setuser] = useState({});
+
+  useEffect(() => {
+    setuser(userJSON[0]);
+    setlang(userJSON[0].lang);
+    setcurrency(userJSON[0].currency);
+  }, []);
 
   const [config, setconfig] = useState({
-    lang: "en",
-    currency: "USD",
+    lang: user.lang ? user.lang : "en",
+    currency: user.currency ? user.currency : "USD",
     currencyRate: 23.8,
-    user: true,
   });
 
   const configure = (con, val) => {
@@ -44,11 +54,13 @@ function MyApp({ Component, pageProps }) {
     <ConfigContext.Provider
       value={[lang, setlang, currency, setcurrency, rate]}
     >
-      <CartContext.Provider
-        value={[cart, setcart, cartAdder, cartLength, setcartLength]}
-      >
-        <Component {...pageProps} />
-      </CartContext.Provider>
+      <UserContext.Provider value={[user, setuser]}>
+        <CartContext.Provider
+          value={[cart, setcart, cartAdder, cartLength, setcartLength]}
+        >
+          <Component {...pageProps} />
+        </CartContext.Provider>
+      </UserContext.Provider>
     </ConfigContext.Provider>
   );
 }

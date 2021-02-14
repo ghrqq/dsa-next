@@ -1,15 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
+import categories from "../categories.json";
+import Link from "next/link";
 
-export default function CategoryBox() {
+export default function CategoryBox({ footer }) {
+  const [catName, setcatName] = useState("");
+
+  const catProvider = (val) => {
+    if (val === catName) {
+      setcatName("");
+      return;
+    }
+    setcatName(val);
+  };
+
   return (
     // <div className="w-11/12 my-4 sm:w-2/12 h-auto sm:h-full md:h-5/6 rounded-3xl p-4 bg-gray-200">
-    <div className="  h-96 w-64 rounded-3xl p-2 bg-gray-100">
-      <div className="mt-2 mb-4  text-2xl text-center font-semibold text-gray-900">
+    <div
+      className={
+        footer
+          ? "  h-auto w-64 rounded-3xl p-2 text-gray-50 "
+          : "  h-auto w-64 rounded-3xl p-2 text-gray-900"
+      }
+    >
+      <div className="mt-2 mb-4  text-2xl text-center font-semibold ">
         Categories
       </div>
-      <div className="text-center text-gray-900 ">
+      <div className="text-center  ">
         <ul className=" list-inside text-xl font-medium">
-          <li>
+          {categories.map((cat) => (
+            <li className="cursor-pointer hover:bg-green-400 hover:text-gray-100">
+              <div onClick={() => catProvider(cat.name)}>{cat.name}</div>
+              <ul
+                className={
+                  catName === cat.name
+                    ? "cursor-pointer"
+                    : "hidden cursor-pointer"
+                }
+              >
+                {cat.children.map((child) => (
+                  <li className="inline-block p-1 border text-xs font-normal rounded-2xl">
+                    <div>
+                      <Link href={`/category/${child}`}>{child}</Link>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+
+          {/* <li>
             Accessory
             <ul className={`${"hidden"}`}>
               <li className="inline-block p-1 border text-xs font-normal rounded-2xl">
@@ -46,7 +85,7 @@ export default function CategoryBox() {
           <li>Engine</li>
           <li>Electric</li>
           <li>Transmission</li>
-          <li>Oil & Liquid</li>
+          <li>Oil & Liquid</li>*/}
         </ul>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import CategoryBox from "./CategoryBox";
 
 export default function Footer() {
   return (
@@ -15,7 +16,7 @@ export default function Footer() {
             SUBSCRIBE
           </button>
         </div>
-        <div className="w-52 text-gray-50 text-center">
+        {/* <div className="w-52 text-gray-50 text-center">
           <ul>
             <li>Cat1</li>
             <li>Cat1</li>
@@ -23,7 +24,9 @@ export default function Footer() {
             <li>Cat1</li>
             <li>Cat1</li>
           </ul>
-        </div>
+        </div> */}
+
+        <CategoryBox footer={true} />
         <div className="w-60 text-gray-50 text-center">
           <div>Lypskaya Str. No: 191 </div>
           <div className="logo text-4xl text-center justify-self-start inline-block text-gray-100 p-2">

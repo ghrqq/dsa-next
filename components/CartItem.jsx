@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import { ConfigContext } from "../pages/_app";
 
-export default function CartItem({ count, item, calc, disp }) {
+export default function CartItem({ count, item, calc, disp, sale }) {
   const { brand, price, origin, description, code, imgpath, quantity } = item;
   const [qty, setqty] = useState(1);
   const [lang, setlang, currency, setcurrency, rate] = useContext(
@@ -36,7 +36,11 @@ export default function CartItem({ count, item, calc, disp }) {
             ? Number(price / rate).toFixed(2)
             : Number(price).toFixed(2)}{" "}
         </div>
-        <div className="text-xl text-green-400 ">17.30</div>
+        <div className="text-xl text-green-400 ">
+          {currency === "USD"
+            ? Number(price / rate - (price / rate) * sale).toFixed(2)
+            : Number(price - price * sale).toFixed(2)}
+        </div>
         <div className="text-xs">{currency}</div>
       </div>
       {count === true ? (
@@ -72,8 +76,10 @@ export default function CartItem({ count, item, calc, disp }) {
             <div>TOTAL</div>
             <div className="text-xl font-semibold">
               {currency === "USD"
-                ? Number((price * qty) / rate).toFixed(2)
-                : Number(price * qty).toFixed(2)}{" "}
+                ? Number((price / rate - (price / rate) * sale) * qty).toFixed(
+                    2
+                  )
+                : Number((price - price * sale) * qty).toFixed(2)}
               <span className="text-base font-normal">{currency}</span>
             </div>
           </div>

@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Sergei",
+    "surname": "Alikova",
+    "id": 17,
+    "role": 1,
+    "lang": "ru",
+    "currency": "UAH",
+    "address": true,
+    "phone": true,
+    "sale": 0.08
+  }
+]
