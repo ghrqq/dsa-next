@@ -72,7 +72,7 @@ export default function CartItem({ count, item, calc, disp, sale }) {
             </div>
           </div>
 
-          <div className="flex flex-col items-center w-1/5 px-2 justify-evenly ">
+          <div className="flex flex-col items-center w-1/2 ml-4 px-2 justify-evenly ">
             <div>TOTAL</div>
             <div className="text-xl font-semibold">
               {currency === "USD"

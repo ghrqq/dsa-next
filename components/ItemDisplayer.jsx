@@ -34,7 +34,7 @@ export default function ItemDisplayer() {
           ))}
         </div>
       ) : (
-        <div className="flex flex-row justify-evenly items-center space-y-4 flex-wrap">
+        <div className="flex flex-row justify-evenly items-center my-8 flex-wrap">
           {items.map((item) => (
             <ItemBox
               item={item}
@@ -43,7 +43,7 @@ export default function ItemDisplayer() {
               currency={currency}
               sale={user.sale}
             />
-          ))}{" "}
+          ))}
         </div>
       )}
     </div>

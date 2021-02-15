@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }) {
   const [currency, setcurrency] = useState("USD");
   const [rate, setrate] = useState(23.8);
   const [user, setuser] = useState({});
+  const [isLoggedIn, setisLoggedIn] = useState(false);
 
   useEffect(() => {
     setuser(userJSON[0]);
@@ -54,7 +55,7 @@ function MyApp({ Component, pageProps }) {
     <ConfigContext.Provider
       value={[lang, setlang, currency, setcurrency, rate]}
     >
-      <UserContext.Provider value={[user, setuser]}>
+      <UserContext.Provider value={[user, setuser, isLoggedIn, setisLoggedIn]}>
         <CartContext.Provider
           value={[cart, setcart, cartAdder, cartLength, setcartLength]}
         >

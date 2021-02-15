@@ -1,6 +1,6 @@
 [
   {
-    "name": "Sergei",
+    "name": "Theo",
     "surname": "Alikova",
     "id": 17,
     "role": 1,
@@ -8,6 +8,7 @@
     "currency": "UAH",
     "address": true,
     "phone": true,
-    "sale": 0.08
+    "sale": 0.08,
+    "agent": 1
   }
 ]

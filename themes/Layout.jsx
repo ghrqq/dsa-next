@@ -6,16 +6,24 @@ import items from "../items.json";
 import React, { useState, useEffect, useReducer, useContext } from "react";
 import Footer from "../components/Footer";
 import { cartBuilder, cartItemIncrementer } from "../tools/cartTools";
-import { ConfigContext, CartContext } from "../pages/_app";
+import { ConfigContext, CartContext, UserContext } from "../pages/_app";
+import Register from "../components/Register";
 
 export default function Layout({ children }) {
   const [isCartHidden, setisCartHidden] = useState(true);
+  const [isRegisterHidden, setisRegisterHidden] = useState(true);
   const [cart, setcart, cartAdder, cartLength] = useContext(CartContext);
 
   const [config, setconfig] = useContext(ConfigContext);
 
+  const [user, setuser, isLoggedIn, setisLoggedIn] = useContext(UserContext);
+
   const cartClickHandler = () => {
     setisCartHidden(!isCartHidden);
+  };
+
+  const regClickHandler = () => {
+    setisRegisterHidden(!isRegisterHidden);
   };
 
   return (
@@ -25,8 +33,21 @@ export default function Layout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="w-full">
-        <Navbar cartBadge={cartLength} cartHandler={cartClickHandler} />
-        <NavbarS cartBadge={cart.length} cartHandler={cartClickHandler} />
+        <Navbar
+          cartBadge={cartLength}
+          cartHandler={cartClickHandler}
+          online={isLoggedIn}
+          regHandler={regClickHandler}
+        />
+        <NavbarS
+          cartBadge={cart.length}
+          cartHandler={cartClickHandler}
+          online={isLoggedIn}
+          regHandler={regClickHandler}
+        />
+      </div>
+      <div className={isRegisterHidden ? "hidden" : null}>
+        <Register />
       </div>
 
       <div className={isCartHidden ? "hidden" : null}>

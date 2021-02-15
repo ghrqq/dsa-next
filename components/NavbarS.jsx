@@ -8,7 +8,12 @@ import UserMenu from "./NavbarTools/UserMenu";
 import Cart from "./NavbarTools/Cart";
 import Link from "next/link";
 
-export default function NavbarS({ cartHandler, cartBadge }) {
+export default function NavbarS({
+  cartHandler,
+  cartBadge,
+  online,
+  regHandler,
+}) {
   const [isHidden, setisHidden] = useState(true);
 
   return (
@@ -20,7 +25,7 @@ export default function NavbarS({ cartHandler, cartBadge }) {
         >
           M
         </div>
-        <LanguageSetter />
+        <CurrencySetter />
         <div className="cursor-pointer" onClick={cartHandler}>
           <Cart badge={cartBadge} />
         </div>
@@ -36,12 +41,23 @@ export default function NavbarS({ cartHandler, cartBadge }) {
             </div>
             <div className="mx-auto text-center p-4 align-middle">News</div>
           </div>
-          <Agent />
-
-          <Login />
-          <Register />
-          <CurrencySetter />
+          {online ? (
+            <div>
+              <UserMenu />
+              <Agent />
+            </div>
+          ) : (
+            <div>
+              <Login />
+              <div className="cursor-pointer  mx-auto" onClick={regHandler}>
+                <Register />
+              </div>
+            </div>
+          )}
+          {/* <Login />
+          <Register /> */}
           {/* <UserMenu /> */}
+          <LanguageSetter />
         </div>
       </div>
     </div>

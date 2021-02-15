@@ -22,7 +22,7 @@ export default function CategoryBox({ footer }) {
           : "  h-auto w-64 rounded-3xl p-2 text-gray-900"
       }
     >
-      <div className="mt-2 mb-4  text-2xl text-center font-semibold ">
+      <div className="mt-8 mb-4  text-2xl text-center font-semibold ">
         Categories
       </div>
       <div className="text-center  ">
