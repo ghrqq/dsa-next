@@ -1,0 +1,26 @@
+[
+  {
+    "user_id": 17,
+    "alias": "home",
+    "id": 112,
+    "city": "Kiev",
+    "name": "Talha OZ",
+    "postcode": 15748,
+    "country": "Ukraine",
+    "address": "Lypskaya Str. No: 194/4",
+    "taxnr": 1548457475,
+    "primary": true
+  },
+  {
+    "user_id": 17,
+    "alias": "work",
+    "id": 184,
+    "city": "Kiev",
+    "name": "Theo OZ",
+    "postcode": 15748,
+    "country": "Ukraine",
+    "address": "Ulitsa Str. No: 194/4",
+    "taxnr": 1749354136,
+    "primary": false
+  }
+]

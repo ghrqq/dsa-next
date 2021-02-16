@@ -6,6 +6,6 @@ import componentComposer from "../../tools/componentComposer";
 
 export default function ButtonCreator() {
   return (
-    <div className="inline-block  text-center">{componentComposer(1)}</div>
+    <div className="inline-block  text-center">{componentComposer(2)}</div>
   );
 }
