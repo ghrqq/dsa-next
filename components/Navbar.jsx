@@ -8,7 +8,13 @@ import Agent from "./NavbarTools/Agent";
 import Cart from "./NavbarTools/Cart";
 import Link from "next/link";
 
-export default function Navbar({ cartHandler, cartBadge, online, regHandler }) {
+export default function Navbar({
+  cartHandler,
+  cartBadge,
+  online,
+  regHandler,
+  userMenuHandler,
+}) {
   return (
     <div className="hidden sm:block">
       <div className="bg-gray-900  w-full h-24 flex flex-row justify-between items-center">
@@ -34,7 +40,9 @@ export default function Navbar({ cartHandler, cartBadge, online, regHandler }) {
       <div className="bg-gray-600  w-full h-auto ">
         <div className=" h-full flex flex-row justify-between items-center">
           {online ? (
-            <UserMenu />
+            <div onClick={userMenuHandler}>
+              <UserMenu />
+            </div>
           ) : (
             <div className="flex flex-row justify-between items-center flex-wrap ">
               <Login />

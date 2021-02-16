@@ -21,6 +21,7 @@ export default function ItemDisplayer() {
   return (
     <div>
       <FilterLine viewHandler={setView} />
+
       {isList ? (
         <div className="flex flex-col justify-evenly mx-auto py-4 items-center space-y-4 ">
           {items.map((item) => (

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Image from "next/image";
+import ButtonCreator from "./ButtonCreator";
 
 import { UserContext } from "../../pages/_app";
 
@@ -17,18 +18,19 @@ export default function UserMenu() {
       <div className="text-gray-100 hover:text-green-400  ml-4  text-2xl w-40">
         {user.name}
       </div>
-      <div className="text-gray-100 hover:text-green-400  ml-4 text-xl">
+      {/* <div className="text-gray-100 hover:text-green-400  ml-4 text-xl">
         My Orders
       </div>
       <div className="text-gray-100 hover:text-green-400 ml-4  text-xl">
         Profile
-      </div>
-      <div
+      </div> */}
+      {/* <ButtonCreator /> */}
+      {/* <div
         className="text-red-400  ml-16 text-xl"
         onClick={() => setisLoggedIn(!isLoggedIn)}
       >
         Log Out
-      </div>
+      </div> */}
     </div>
   );
 }
