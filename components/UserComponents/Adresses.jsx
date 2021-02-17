@@ -16,7 +16,7 @@ export default function Adresses({ use }) {
   return (
     <div>
       <div className="w-full text-center border rounded-3xl py-2 text-xl font-semibold flex flex-row justify-around items-center my-4">
-        DELIVERY ADRESSES
+        DELIVERY ADRESSES 
       </div>
       {addresses.length > 0 ? (
         chosenAddress !== "" ?
