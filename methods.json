@@ -1,0 +1,66 @@
+[
+  
+      
+      { 
+          
+        "payment": [  {
+              "type" : "Credit Cart",
+              "duration": "Instant",
+              "available": false,
+              "explanation": "Currently not available"
+          },
+          {
+            "type" : "Cash on Store",
+            "duration": "Instant",
+            "available": true,
+            "explanation": "You can order online and pay at the store." 
+          },
+          {
+            "type" : "Cash on Delivery",
+            "duration": "Instant",
+            "available": true,
+            "explanation": "You can pay to the courrier when you get your items."
+          },
+          {
+            "type" : "Bank Transfer",
+            "duration": "2-3 working days",
+            "available": true,
+            "explanation": "Items will be shipped after the transaction. It may take time up to 2-3 working days due to your banks policies."
+          }],
+
+          "delivery": [
+              {
+                  "type": "Regular Courrier",
+                  "duration": "3-5 working days (within Ukraine)",
+                  "available": true,
+                  "explanation": "Normal shipment with Nasha Poshta",
+                  "price": 50
+              },
+              {
+                "type": "On Store",
+                "duration": "Instant",
+                "available": true,
+                "explanation": "You can order online and collect your items from store.",
+                "price": "Free"
+            },
+            {
+                "type": "Private Delivery",
+                "duration": "within hours",
+                "available": true,
+                "explanation": "Fast delivery with private courrier in Kiev.",
+                "price": 250
+            }, 
+            {
+                "type": "TAXI",
+                "duration": "Instant",
+                "available": true,
+                "explanation": "We can send the items by taxi at your own expense and risk.",
+                "price": "Not included"
+            }
+            
+          ]
+
+
+      }
+   
+]

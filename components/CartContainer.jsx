@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import CartItem from "./CartItem";
+import OrderForm from "./OrderForm"
 import items from "../items.json";
 import { CartContext, ConfigContext, UserContext } from "../pages/_app";
 
@@ -8,6 +9,7 @@ export default function CartContainer({ stepper }) {
   const [cart, setcart, cartAdder, cartLength, setcartLength] = useContext(
     CartContext
   );
+  const [step, setstep] = useState(0);
 
   const [lang, setlang, currency, setcurrency, rate] = useContext(
     ConfigContext
@@ -42,25 +44,35 @@ export default function CartContainer({ stepper }) {
     setcount(count + 1);
   };
 
+  const componentProvider = () => {
+    if (step === 0) {
+      return (<div className="w-9/12 mr-4 h-96 overflow-scroll p-8 bg-gray-50 ">
+      {cartLength <= 0 ? (
+        <div> Cart is empty! </div>
+      ) : (
+        cart.map((item) => {
+          return (
+            <CartItem
+              count={true}
+              key={item.code}
+              item={item}
+              calc={adder}
+              sale={user.sale}
+            />
+          );
+        })
+      )}
+    </div>)
+    }
+    if (step === 1) {
+      return <OrderForm />;
+    }
+  };
+
   return (
     <div className="w-full h-auto min-h-screen opacity-100 z-50   bg-gray-600 bg-opacity-60 mx-auto  sm:absolute sm:right-0 top-auto flex flex-col justify-around items-end">
-      <div className="w-9/12 mr-4 h-96 overflow-scroll p-8 bg-gray-50 ">
-        {cartLength <= 0 ? (
-          <div> Cart is empty! </div>
-        ) : (
-          cart.map((item) => {
-            return (
-              <CartItem
-                count={true}
-                key={item.code}
-                item={item}
-                calc={adder}
-                sale={user.sale}
-              />
-            );
-          })
-        )}
-      </div>
+      <div className="w-9/12 bg-gray-600 text-gray-50 text-right mr-4 p-4 pr-8"> Step {step+1}/3 </div>
+      {componentProvider()}
       <div className="flex flex-col sm:flex-row justify-between w-9/12 mr-4 items-center sm:mb-96 bg-gray-600 text-center">
         <div className="flex flex-col sm:flex-row justify-start items-center w-full">
           <div className="flex flex-col justify-evenly items-center w-36 px-2">
@@ -70,7 +82,7 @@ export default function CartContainer({ stepper }) {
             >
               EMPTY CART
             </div>
-            <div className="bg-green-400 w-full text-gray-100 px-2 py-1 rounded-full my-1">
+            <div className="bg-green-400 w-full text-gray-100 px-2 py-1 rounded-full my-1" onClick={() => setstep(step-1)} >
               SAVE
             </div>
           </div>
@@ -84,7 +96,7 @@ export default function CartContainer({ stepper }) {
           </div>
           <div
             className="bg-green-400 h-full my-2 mr-4 text-2xl text-gray-100 px-10  py-2 rounded-full"
-            onClick={() => stepper(+1)}
+            onClick={() => setstep(+1)}
           >
             ORDER
           </div>

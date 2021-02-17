@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import CartContainer from "./CartContainer";
 import OrderForm from "./OrderForm";
 
 export default function Cart() {
   const [step, setstep] = useState(0);
+  
 
   const stepHandler = (direction) => {
     setstep(step + direction);

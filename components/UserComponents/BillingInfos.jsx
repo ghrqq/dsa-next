@@ -4,6 +4,7 @@ import billinginfos from "../../billinginfos.json";
 
 export default function BillingInfos({ use }) {
   const [billingOnFocus, setbillingOnFocus] = useState("");
+  const [chosenBilling, setchosenBilling] = useState("");
 
   const billingProvider = (val) => {
     if (val === billingOnFocus) {
@@ -18,6 +19,18 @@ export default function BillingInfos({ use }) {
         BILLING ADRESSES
       </div>
       {billinginfos.length > 0 ? (
+        chosenBilling !== "" ?
+        <div className="w-full h-full bg-yellow-400 bg-opacity-60 text-center align-middle text-gray-50 rounded-3xl" >
+                <h1 className="text-4xl py-8 uppercase">
+                  {chosenBilling}
+                  </h1> 
+                 <button className="bg-blue-400 py-2 px-8 my-12 text-xl rounded-3xl" onClick={()=> setchosenBilling("")}>EDIT</button>
+        
+        
+                 </div>
+        
+        
+                : 
         billinginfos.map((item) => (
           <div>
             <div className="w-full text-center border rounded-3xl flex flex-row justify-around items-center">
@@ -28,7 +41,7 @@ export default function BillingInfos({ use }) {
               </div>
               <div
                 className="justify-self-center w-1/3 text-center text-lg font-semibold cursor-pointer uppercase"
-                onClick={use ? () => window.alert("used") : null}
+                onClick={use ? () => setchosenBilling(item.alias) : null}
               >
                 {item.alias}
               </div>
