@@ -184,8 +184,12 @@ export default function profile() {
         </div> */}
       </div>
       <div className="flex flex-row flex-wrap justify-center items-stretch">
-        <Addresses use={true} />
-        <BillingInfos />
+        <div className="w-4/5 sm:w-3/5 md:w-2/5 lg:w-1/3 rounded-3xl mx-auto">
+          <Addresses />
+        </div>
+        <div className="w-4/5 sm:w-3/5 md:w-2/5 lg:w-1/3 rounded-3xl mx-auto">
+          <BillingInfos />
+        </div>
       </div>
     </Layout>
   );

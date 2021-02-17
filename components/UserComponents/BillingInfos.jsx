@@ -13,7 +13,7 @@ export default function BillingInfos({ use }) {
     setbillingOnFocus(val);
   };
   return (
-    <div className="w-4/5 sm:w-3/5 md:w-2/5 lg:w-1/3 rounded-3xl mx-auto">
+    <div>
       <div className="w-full text-center border rounded-3xl py-2 text-xl font-semibold flex flex-row justify-around items-center my-4">
         BILLING ADRESSES
       </div>
