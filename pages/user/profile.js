@@ -8,6 +8,7 @@ import BillingInfos from "../../components/UserComponents/BillingInfos";
 export default function profile() {
   const [user, setuser, isLoggedIn, setisLoggedIn] = useContext(UserContext);
   const [state, setstate] = useState({});
+  const [showConfirm, setshowConfirm] = useState(false)
 
   const [isMailsAllowed, setisMailsAllowed] = useState(true);
 
@@ -26,6 +27,18 @@ export default function profile() {
 
     console.log(temp);
 
+    setstate(temp);
+  };
+  const passChangeHandler = (e) => {
+    let val = e.target.value;
+    let nam = e.target.name;
+
+    let temp = state;
+
+    temp[nam] = val;
+
+    console.log(temp);
+    setshowConfirm(true)
     setstate(temp);
   };
 
@@ -76,7 +89,18 @@ export default function profile() {
             name="password"
             value={state.password}
             onChange={changeHandler}
+            onFocus={() => setshowConfirm(true)}
           />
+          <div className={!showConfirm ? "hidden" : null}> 
+<input
+  type="text"
+  className="w-full mx-auto my-2 focus:outline-none focus:shadow-inner shadow-2xl rounded-3xl py-2 px-4 text-gray-900 "
+  placeholder="Confirm Your Password"
+  //TODO Add confirmation logic here.
+  name="password"
+  value={state.passwordConfirm}
+  onChange={changeHandler}
+/> </div>
           <div className="flex flex-row flex-wrap justify-center items-center ">
             <div className="my-2 text-center w-1/2">
               Preferred Language: <br />

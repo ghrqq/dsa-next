@@ -4,6 +4,7 @@ import Order from "./Order";
 
 export default function Orders() {
   const [orderOnFocus, setorderOnFocus] = useState("");
+  const [orders, setorders] = useState(singleOrder)
 
   const orderProvider = (val) => {
     if (val === orderOnFocus) {

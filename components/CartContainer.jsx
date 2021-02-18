@@ -24,6 +24,17 @@ export default function CartContainer({ stepper }) {
     setcartLength(0);
   };
 
+  // Disabler of the "ORDER" button according to steps.
+  const disabled =() => {
+if(step === 0 && cartLength < 1){
+  return true;
+}
+if(step === 1 ){
+  return true;
+}
+
+  }
+
   useEffect(() => {
     let val = 0;
     cart.forEach((item) => {
@@ -94,12 +105,23 @@ export default function CartContainer({ stepper }) {
               : Number(total - total * user.sale).toFixed(2)}{" "}
             {currency === "USD" ? "USD" : "UAH"}
           </div>
-          <div
+         {disabled() ? 
+         
+<button
+            className="bg-gray-400 h-full my-2 mr-4 text-2xl text-gray-100 px-10  py-2 rounded-full"
+            disabled={true}
+            onClick={() => setstep(+1)}
+          >
+            ORDER
+          </button>
+
+         :
+         <button
             className="bg-green-400 h-full my-2 mr-4 text-2xl text-gray-100 px-10  py-2 rounded-full"
             onClick={() => setstep(+1)}
           >
             ORDER
-          </div>
+          </button>}
         </div>
       </div>
     </div>

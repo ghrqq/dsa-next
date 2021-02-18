@@ -7,6 +7,10 @@
     "total": 144,
     "payment": "Cash on Delivery",
     "delivery": "Private",
+    "approved": false,
+    "deliveryInfo": "home",
+    "billingInfo": "work",
+    "paymentStatus": "pending",
     "status": "delivered",
     "items": [
       {
@@ -16,6 +20,7 @@
         "category": "electric",
         "quantity": 4,
         "total": 115.2
+        
       },
       {
         "code": "15126-51391",
@@ -35,6 +40,10 @@
     "total": 258,
     "payment": "Cash on Delivery",
     "delivery": "Private",
+    "approved": false,
+    "deliveryInfo": "home",
+    "billingInfo": "work",
+    "paymentStatus": "pending",
     "status": "preparing",
     "items": [
       {
@@ -63,6 +72,10 @@
     "total": 258,
     "payment": "Cash on Delivery",
     "delivery": "Private",
+    "approved": false,
+    "deliveryInfo": "home",
+    "billingInfo": "work",
+    "paymentStatus": "pending",
     "status": "canceled",
     "items": [
       {
@@ -91,6 +104,10 @@
     "total": 258,
     "payment": "Cash on Delivery",
     "delivery": "Private",
+    "approved": false,
+    "deliveryInfo": "home",
+    "billingInfo": "work",
+    "paymentStatus": "pending",
     "status": "courrier",
     "items": [
       {

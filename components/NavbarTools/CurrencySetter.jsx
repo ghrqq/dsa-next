@@ -17,8 +17,8 @@ export default function CurrencySetter() {
         // value={config.currency}
         onChange={(e) => setcurrency(e.target.value)}
       >
-        <option value="UAH">UAH</option>
-        <option value="USD">USD</option>
+        <option key="UAH" value="UAH">UAH</option>
+        <option key="USD" value="USD">USD</option>
       </select>
 
       <span className="text-red-400 text-xs text-center w-full">
