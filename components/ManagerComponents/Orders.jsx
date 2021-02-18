@@ -7,7 +7,7 @@ export default function Orders() {
 
     return (
         <div>
-            <div className="w-5/6 mx-auto flex flex-row flex-wrap justify-evenly items-center cursor-pointer bg-gray-500 py-4">
+            <div className="w-5/6 mx-auto flex flex-row flex-wrap justify-evenly items-center cursor-pointer bg-gray-500 py-4 no-print">
               <div className="w-auto sm:w-1/6 font-bold">Order #</div>
               <div className="w-auto sm:w-1/6 font-bold">Order Date</div>
               <div className="w-auto sm:w-1/6 font-bold">

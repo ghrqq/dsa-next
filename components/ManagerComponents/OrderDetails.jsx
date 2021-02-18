@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
+import CheckList from '../../misc/CheckList';
 
 export default function OrderDetails({order}) {
 const [isExpand, setisExpand] = useState(false)
 const [orderState, setorderState] = useState(order)
 const [count, setcount] = useState(0);
+const [isPrint, setisPrint] = useState(false)
 
 
 const handleChange = (code, e) => {
@@ -45,11 +47,20 @@ const handlePaymentStatus = (e) => {
 
 }
 
+const handlePrint = () => {
+    setisPrint(!isPrint);
+setTimeout(() => {
+    window.print();
+    
+}, 500);
+
+}
+
 const {id, userid, date, currency, total, payment, delivery, status, items, approved, deliveryInfo, billingInfo, paymentStatus} = orderState;
 
     return (
         <div>
-            <div className="w-5/6 mx-auto flex flex-col sm:flex-row  justify-evenly items-center cursor-pointer border bg-gray-400">
+            <div className="w-5/6 mx-auto flex flex-col sm:flex-row  justify-evenly items-center cursor-pointer border bg-gray-400 no-print">
             <div className="" >{id}</div>
             <div className="" >{userid}</div>
             <div className="" >{date}</div>
@@ -93,7 +104,7 @@ const {id, userid, date, currency, total, payment, delivery, status, items, appr
             </div>
 
 
-<div className={isExpand ? null : "hidden"}>
+<div className={isExpand ? "no-print" : "hidden no-print"}>
     <div className="flex flex-col w-5/6 justify-evenly bg-gray-300 items-center text-left mx-auto ">
     <div className="w-full  mx-auto py-2 flex flex-row justify-evenly items-stretch border-b-2 border-gray-500 border-solid">
     <div className="w-1/5">Code</div>
@@ -113,7 +124,7 @@ const {id, userid, date, currency, total, payment, delivery, status, items, appr
 
     {items.map(item => (
 
-<div className="w-full  mx-auto flex flex-row justify-evenly items-stretch">
+<div className="w-full  mx-auto flex flex-row justify-evenly items-stretch no-print">
     <div className="w-1/5">{item.code}</div>
     <div className="w-1/5">{item.category}/{item.subcategory}</div>
    
@@ -147,13 +158,13 @@ const {id, userid, date, currency, total, payment, delivery, status, items, appr
 
         </div>
 
-    <div className={count > 0 ? "bg-red-400 w-full" : "hidden"}>
+    <div className={count > 0 ? "bg-red-400 w-full " : "hidden"}>
         You have made some changes on order. Please double check and save them. 
     </div>
 
 {/* Button Box */}
-    <div className="flex flex-row justify-evenly items-center">
-    <button className="bg-indigo-400 px-4 py-2 my-2 mx-2 rounded-xl text-center text-gray-50">PRINT CHECKLIST</button>
+    <div className="flex flex-row justify-evenly items-center no-print">
+    <button className="bg-indigo-400 px-4 py-2 my-2 mx-2 rounded-xl text-center text-gray-50" onClick={handlePrint} > PRINT CHECKLIST</button>
     <button className="bg-indigo-400 px-4 py-2 my-2 mx-2 rounded-xl text-center text-gray-50">PRINT BILL</button>
 
     <div className="inline-block text-center text-xs">
@@ -192,9 +203,15 @@ const {id, userid, date, currency, total, payment, delivery, status, items, appr
 
         {/* End of Button Box */}
 
-
 </div>
         </div>
+        { isPrint ?  
+        
+<CheckList info={orderState} />
+:
+null
+        
+        }
         </div>
     )
 }

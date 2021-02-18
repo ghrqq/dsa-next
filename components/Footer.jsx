@@ -3,7 +3,7 @@ import CategoryBox from "./CategoryBox";
 
 export default function Footer() {
   return (
-    <div className="w-full bg-gray-900 ">
+    <div className="w-full bg-gray-900 no-print ">
       <div className="flex flex-col sm:flex-row  justify-between items-center mx-auto my-8 px-12 py-24">
         <div className="w-52">
           <div className="text-gray-50">

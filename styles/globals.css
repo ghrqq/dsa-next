@@ -37,3 +37,16 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.print {
+  display: none;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+  .print {
+    display: block !important;
+  }
+}

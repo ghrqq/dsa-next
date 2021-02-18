@@ -33,12 +33,12 @@ export default function Layout({ children }) {
   };
 
   return (
-    <div className="w-full z-0">
+    <div className="w-full z-0 ">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="w-full">
+      <div className="w-full no-print">
         <Navbar
           cartBadge={cartLength}
           cartHandler={cartClickHandler}
@@ -54,7 +54,7 @@ export default function Layout({ children }) {
           userMenuHandler={userMenuClickHandler}
         />
       </div>
-      <div className={isUserMenuHidden ? "hidden" : null}>
+      <div className={isUserMenuHidden ? "hidden" : "no-print"}>
         <div className="w-auto h-auto text-left px-4 py-2 flex flex-row flex-wrap justify-between items-center bg-yellow-400 ">
           <ButtonCreator />
           <div
@@ -65,11 +65,11 @@ export default function Layout({ children }) {
           </div>
         </div>
       </div>
-      <div className={isRegisterHidden ? "hidden" : null}>
+      <div className={isRegisterHidden ? "hidden" : "no-print"}>
         <Register />
       </div>
 
-      <div className={isCartHidden ? "hidden" : null}>
+      <div className={isCartHidden ? "hidden" : "no-print"}>
         <Cart items={items} />
       </div>
 
