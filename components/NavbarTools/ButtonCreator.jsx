@@ -6,6 +6,8 @@ import componentComposer from "../../tools/componentComposer";
 
 export default function ButtonCreator() {
   return (
-    <div className="inline-block  text-center">{componentComposer(3)}</div>
+
+    // TODO: Hash for user roles will be added
+    <div className="inline-block  text-center">{componentComposer(1)}</div>
   );
 }

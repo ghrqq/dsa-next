@@ -48,7 +48,7 @@ const handlePaymentStatus = (e) => {
 }
 
 const handlePrint = () => {
-    setisPrint(!isPrint);
+    setisPrint(true);
 setTimeout(() => {
     window.print();
     
