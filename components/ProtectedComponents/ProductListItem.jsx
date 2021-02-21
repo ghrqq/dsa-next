@@ -86,7 +86,7 @@ export default function ProductListItem({ item, checkHandler, checked }) {
             disabled={!isEdit}
             onChange={(e) => handleSubSave("description", e.target.value)}
           />
-
+          {/* TODO: Image editor will come here */}
           <CompatibleEditor
             modals={compatible}
             isEdit={isEdit}

@@ -12,6 +12,9 @@ export default function componentComposer(val) {
           <Link href="/protected/manageproducts">Products</Link>
         </div>
         <div className="text-gray-100 hover:text-green-400 ml-4  text-xl">
+          <Link href="/protected/addproducts">Add Products</Link>
+        </div>
+        <div className="text-gray-100 hover:text-green-400 ml-4  text-xl">
           <Link href="/protected/managecustomers">Customers</Link>
         </div>
         <div className="text-gray-100 hover:text-green-400 ml-4  text-xl">
