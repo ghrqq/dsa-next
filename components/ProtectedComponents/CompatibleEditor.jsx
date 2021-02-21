@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
-export default function CompatibleEditor({ modals, isEdit, handleSave }) {
+export default function CompatibleEditor({
+  modals,
+  isEdit,
+  handleSave,
+  index,
+}) {
   const [compatible, setcompatible] = useState(modals);
   const [inputVal, setinputVal] = useState("");
 
@@ -53,9 +58,13 @@ export default function CompatibleEditor({ modals, isEdit, handleSave }) {
       <button
         disabled={!isEdit}
         className="mx-2"
-        onClick={() => handleSave("compatible", compatible)}
+        onClick={
+          index !== undefined
+            ? () => handleSave(index, "compatible", compatible)
+            : () => handleSave("compatible", compatible)
+        }
       >
-        Save
+        Save {index !== undefined ? console.log(index) : console.log("shit")}
       </button>
     </div>
   );

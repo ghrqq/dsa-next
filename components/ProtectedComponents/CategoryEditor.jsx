@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import categories from "../../categories.json";
 
-function CategoryEditor({ category, subcategory, isEdit, handleSave }) {
+function CategoryEditor({ category, subcategory, isEdit, handleSave, index }) {
   const [cat, setcat] = useState(category);
   const [subCat, setsubCat] = useState(subcategory);
 
   const handleChange = (nam, e) => {
     let val = e.target.value;
-    if (nam === "category") {
-      handleSave("category", val);
-      setcat(val);
-      return;
-    }
-    if (nam === "subcategory") {
-      handleSave("subcategory", val);
-      setsubCat(val);
-      return;
+    if (index === undefined) {
+      if (nam === "category") {
+        handleSave("category", val);
+        setcat(val);
+        return;
+      }
+      if (nam === "subcategory") {
+        handleSave("subcategory", val);
+        setsubCat(val);
+        return;
+      }
+    } else {
+      if (nam === "category") {
+        handleSave(index, "category", val);
+        setcat(val);
+        return;
+      }
+      if (nam === "subcategory") {
+        handleSave(index, "subcategory", val);
+        setsubCat(val);
+        return;
+      }
     }
     return;
   };
