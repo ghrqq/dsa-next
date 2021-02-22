@@ -73,7 +73,7 @@ export default function Layout({ children }) {
         <Cart items={items} />
       </div>
 
-      <main>{children}</main>
+      <main key={children}>{children}</main>
 
       <Footer />
     </div>

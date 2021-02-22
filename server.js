@@ -6,12 +6,6 @@ const cors = require("cors");
 
 const app = express();
 
-// 1. Register a user
-// 2. Login a user
-// 3. Logout a user
-// 4. Setup a protected route
-// 5. Get a new accesstoken with a refresh token
-
 app.use(cookieParser());
 
 app.use(
@@ -32,6 +26,7 @@ app.use(
 );
 
 const mongoose = require("mongoose");
+const { register } = require("./routes/general/gen_userroutes");
 mongoose.connect(process.env.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -44,6 +39,11 @@ db.once("open", () => {
 });
 
 app.get("/", (req, res) => res.send("Hello Again!"));
+
+// Routes
+// // General User - General user routes like login, register, token renewal etc.
+
+app.post("/register", async (req, res) => register(req, res));
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is running on port ${process.env.PORT}`)

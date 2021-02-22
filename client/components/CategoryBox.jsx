@@ -28,7 +28,10 @@ export default function CategoryBox({ footer }) {
       <div className="text-center  ">
         <ul className=" list-inside text-xl font-medium">
           {categories.map((cat) => (
-            <li className="cursor-pointer hover:bg-green-400 hover:text-gray-100">
+            <li
+              key={cat}
+              className="cursor-pointer hover:bg-green-400 hover:text-gray-100"
+            >
               <div onClick={() => catProvider(cat.name)}>{cat.name}</div>
               <ul
                 className={
@@ -38,7 +41,10 @@ export default function CategoryBox({ footer }) {
                 }
               >
                 {cat.children.map((child) => (
-                  <li className="inline-block p-1 border text-xs font-normal rounded-2xl">
+                  <li
+                    key={child}
+                    className="inline-block p-1 border text-xs font-normal rounded-2xl"
+                  >
                     <div>
                       <Link href={`/category/${child}`}>{child}</Link>
                     </div>

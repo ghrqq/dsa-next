@@ -1,0 +1,133 @@
+Date : 2021-02-22 04:00:01
+Directory : /Users/talhaoz/dsa-next
+Total : 86 files,  8433 codes, 168 comments, 524 blanks, all 9125 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| JSON             |         11 |      4,898 |          0 |         19 |      4,917 |
+| JavaScript React |         47 |      2,523 |         58 |        309 |      2,890 |
+| JavaScript       |         25 |        947 |        108 |        171 |      1,226 |
+| CSS              |          1 |         41 |          2 |         10 |         53 |
+| Markdown         |          1 |         20 |          0 |         15 |         35 |
+| XML              |          1 |          4 |          0 |          0 |          4 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                               | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                  |         86 |      8,433 |        168 |        524 |      9,125 |
+| client                                                                             |         75 |      6,507 |        162 |        470 |      7,139 |
+| client/components                                                                  |         43 |      2,366 |         58 |        274 |      2,698 |
+| client/components/ManagerComponents                                                |          3 |        192 |          0 |         69 |        261 |
+| client/components/NavbarTools                                                      |          8 |        172 |         12 |         28 |        212 |
+| client/components/ProtectedComponents                                              |          5 |        315 |          0 |         26 |        341 |
+| client/components/Tools                                                            |          3 |        118 |          0 |          8 |        126 |
+| client/components/UserComponents                                                   |          6 |        432 |          0 |         33 |        465 |
+| client/misc                                                                        |          1 |         66 |          0 |         20 |         86 |
+| client/pages                                                                       |         13 |        559 |         99 |        115 |        773 |
+| client/pages/api                                                                   |          1 |          3 |          1 |          2 |          6 |
+| client/pages/manager                                                               |          3 |         61 |          0 |         23 |         84 |
+| client/pages/protected                                                             |          4 |        199 |         31 |         47 |        277 |
+| client/pages/user                                                                  |          2 |        175 |         39 |         19 |        233 |
+| client/public                                                                      |          1 |          4 |          0 |          0 |          4 |
+| client/styles                                                                      |          1 |         41 |          2 |         10 |         53 |
+| client/themes                                                                      |          1 |         71 |          0 |         11 |         82 |
+| client/tools                                                                       |          2 |         61 |          3 |          5 |         69 |
+| schemas                                                                            |          8 |        298 |          0 |         39 |        337 |
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                           | language         | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| /Users/talhaoz/dsa-next/client/README.md                                           | Markdown         |         20 |          0 |         15 |         35 |
+| /Users/talhaoz/dsa-next/client/addresses.json                                      | JSON             |         24 |          0 |          1 |         25 |
+| /Users/talhaoz/dsa-next/client/billinginfos.json                                   | JSON             |         26 |          0 |          1 |         27 |
+| /Users/talhaoz/dsa-next/client/categories.json                                     | JSON             |         41 |          0 |          1 |         42 |
+| /Users/talhaoz/dsa-next/client/components/Cart.jsx                                 | JavaScript React |         18 |          0 |          6 |         24 |
+| /Users/talhaoz/dsa-next/client/components/CartContainer.jsx                        | JavaScript React |        113 |          2 |         15 |        130 |
+| /Users/talhaoz/dsa-next/client/components/CartItem.jsx                             | JavaScript React |         88 |          0 |          9 |         97 |
+| /Users/talhaoz/dsa-next/client/components/CategoryBox.jsx                          | JavaScript React |         52 |         37 |          5 |         94 |
+| /Users/talhaoz/dsa-next/client/components/Filter.jsx                               | JavaScript React |         79 |          0 |          6 |         85 |
+| /Users/talhaoz/dsa-next/client/components/FilterLine.jsx                           | JavaScript React |         68 |          0 |          6 |         74 |
+| /Users/talhaoz/dsa-next/client/components/Footer.jsx                               | JavaScript React |         36 |          7 |          3 |         46 |
+| /Users/talhaoz/dsa-next/client/components/ItemBox.jsx                              | JavaScript React |         67 |          0 |          3 |         70 |
+| /Users/talhaoz/dsa-next/client/components/ItemDisplayer.jsx                        | JavaScript React |         47 |          0 |          6 |         53 |
+| /Users/talhaoz/dsa-next/client/components/ItemList.jsx                             | JavaScript React |         45 |          0 |          4 |         49 |
+| /Users/talhaoz/dsa-next/client/components/ManagerComponents/OrderDetails.jsx       | JavaScript React |        161 |          0 |         57 |        218 |
+| /Users/talhaoz/dsa-next/client/components/ManagerComponents/Orders.jsx             | JavaScript React |         23 |          0 |          9 |         32 |
+| /Users/talhaoz/dsa-next/client/components/ManagerComponents/UserDetails.jsx        | JavaScript React |          8 |          0 |          3 |         11 |
+| /Users/talhaoz/dsa-next/client/components/Methods.jsx                              | JavaScript React |         92 |          0 |         21 |        113 |
+| /Users/talhaoz/dsa-next/client/components/Navbar.jsx                               | JavaScript React |         66 |          0 |          2 |         68 |
+| /Users/talhaoz/dsa-next/client/components/NavbarS.jsx                              | JavaScript React |         63 |          0 |          3 |         66 |
+| /Users/talhaoz/dsa-next/client/components/NavbarTools/Agent.jsx                    | JavaScript React |         21 |          0 |          2 |         23 |
+| /Users/talhaoz/dsa-next/client/components/NavbarTools/ButtonCreator.jsx            | JavaScript React |          9 |          2 |          3 |         14 |
+| /Users/talhaoz/dsa-next/client/components/NavbarTools/Cart.jsx                     | JavaScript React |         23 |          0 |          2 |         25 |
+| /Users/talhaoz/dsa-next/client/components/NavbarTools/CurrencySetter.jsx           | JavaScript React |         25 |          2 |          4 |         31 |
+| /Users/talhaoz/dsa-next/client/components/NavbarTools/LanguageSetter.jsx           | JavaScript React |         26 |          0 |          4 |         30 |
+| /Users/talhaoz/dsa-next/client/components/NavbarTools/Login.jsx                    | JavaScript React |         39 |          0 |          7 |         46 |
+| /Users/talhaoz/dsa-next/client/components/NavbarTools/Register.jsx                 | JavaScript React |          4 |          0 |          2 |          6 |
+| /Users/talhaoz/dsa-next/client/components/NavbarTools/UserMenu.jsx                 | JavaScript React |         25 |          8 |          4 |         37 |
+| /Users/talhaoz/dsa-next/client/components/NewsCard.jsx                             | JavaScript React |         17 |          0 |          2 |         19 |
+| /Users/talhaoz/dsa-next/client/components/NewsDisplay.jsx                          | JavaScript React |         11 |          0 |          2 |         13 |
+| /Users/talhaoz/dsa-next/client/components/OrderForm.jsx                            | JavaScript React |         34 |          0 |          7 |         41 |
+| /Users/talhaoz/dsa-next/client/components/ProtectedComponents/CategoryEditor.jsx   | JavaScript React |         65 |          0 |          7 |         72 |
+| /Users/talhaoz/dsa-next/client/components/ProtectedComponents/CompatibleEditor.jsx | JavaScript React |         66 |          0 |          6 |         72 |
+| /Users/talhaoz/dsa-next/client/components/ProtectedComponents/FindProducts.jsx     | JavaScript React |         28 |          0 |          2 |         30 |
+| /Users/talhaoz/dsa-next/client/components/ProtectedComponents/ProductListItem.jsx  | JavaScript React |        106 |          0 |          8 |        114 |
+| /Users/talhaoz/dsa-next/client/components/ProtectedComponents/SingleItemAdder.jsx  | JavaScript React |         50 |          0 |          3 |         53 |
+| /Users/talhaoz/dsa-next/client/components/Register.jsx                             | JavaScript React |        182 |          0 |          8 |        190 |
+| /Users/talhaoz/dsa-next/client/components/SingleItem.jsx                           | JavaScript React |         59 |          0 |          2 |         61 |
+| /Users/talhaoz/dsa-next/client/components/Tools/ItemIconSet.jsx                    | JavaScript React |         27 |          0 |          2 |         29 |
+| /Users/talhaoz/dsa-next/client/components/Tools/Options.jsx                        | JavaScript React |         75 |          0 |          4 |         79 |
+| /Users/talhaoz/dsa-next/client/components/Tools/ReplacementItem.jsx                | JavaScript React |         16 |          0 |          2 |         18 |
+| /Users/talhaoz/dsa-next/client/components/UserComponents/AddressForm.jsx           | JavaScript React |         63 |          0 |          6 |         69 |
+| /Users/talhaoz/dsa-next/client/components/UserComponents/Adresses.jsx              | JavaScript React |         88 |          0 |          7 |         95 |
+| /Users/talhaoz/dsa-next/client/components/UserComponents/BillingForm.jsx           | JavaScript React |         71 |          0 |          6 |         77 |
+| /Users/talhaoz/dsa-next/client/components/UserComponents/BillingInfos.jsx          | JavaScript React |         90 |          0 |          7 |         97 |
+| /Users/talhaoz/dsa-next/client/components/UserComponents/Order.jsx                 | JavaScript React |         38 |          0 |          3 |         41 |
+| /Users/talhaoz/dsa-next/client/components/UserComponents/Orders.jsx                | JavaScript React |         82 |          0 |          4 |         86 |
+| /Users/talhaoz/dsa-next/client/items.json                                          | JSON             |         35 |          0 |          1 |         36 |
+| /Users/talhaoz/dsa-next/client/methods.json                                        | JSON             |         58 |          0 |          8 |         66 |
+| /Users/talhaoz/dsa-next/client/misc/CheckList.jsx                                  | JavaScript React |         66 |          0 |         20 |         86 |
+| /Users/talhaoz/dsa-next/client/package-lock.json                                   | JSON             |      2,955 |          0 |          1 |      2,956 |
+| /Users/talhaoz/dsa-next/client/package.json                                        | JSON             |         18 |          0 |          1 |         19 |
+| /Users/talhaoz/dsa-next/client/pages/_app.js                                       | JavaScript       |         55 |          2 |         13 |         70 |
+| /Users/talhaoz/dsa-next/client/pages/api/hello.js                                  | JavaScript       |          3 |          1 |          2 |          6 |
+| /Users/talhaoz/dsa-next/client/pages/index.js                                      | JavaScript       |         46 |         26 |          8 |         80 |
+| /Users/talhaoz/dsa-next/client/pages/manager/customers.js                          | JavaScript       |         42 |          0 |         19 |         61 |
+| /Users/talhaoz/dsa-next/client/pages/manager/misc.js                               | JavaScript       |          9 |          0 |          2 |         11 |
+| /Users/talhaoz/dsa-next/client/pages/manager/orders.js                             | JavaScript       |         10 |          0 |          2 |         12 |
+| /Users/talhaoz/dsa-next/client/pages/protected/addproducts.js                      | JavaScript       |         35 |          0 |          8 |         43 |
+| /Users/talhaoz/dsa-next/client/pages/protected/managecustomers.js                  | JavaScript       |         43 |          0 |         19 |         62 |
+| /Users/talhaoz/dsa-next/client/pages/protected/manageproducts.js                   | JavaScript       |        111 |         31 |         18 |        160 |
+| /Users/talhaoz/dsa-next/client/pages/protected/orders.js                           | JavaScript       |         10 |          0 |          2 |         12 |
+| /Users/talhaoz/dsa-next/client/pages/search.jsx                                    | JavaScript React |         20 |          0 |          3 |         23 |
+| /Users/talhaoz/dsa-next/client/pages/user/orders.js                                | JavaScript       |         10 |          0 |          2 |         12 |
+| /Users/talhaoz/dsa-next/client/pages/user/profile.js                               | JavaScript       |        165 |         39 |         17 |        221 |
+| /Users/talhaoz/dsa-next/client/paymentmethods.jsx                                  | JavaScript React |          0 |          0 |          1 |          1 |
+| /Users/talhaoz/dsa-next/client/postcss.config.js                                   | JavaScript       |          6 |          0 |          1 |          7 |
+| /Users/talhaoz/dsa-next/client/public/vercel.svg                                   | XML              |          4 |          0 |          0 |          4 |
+| /Users/talhaoz/dsa-next/client/singleOrder.json                                    | JSON             |        130 |          0 |          2 |        132 |
+| /Users/talhaoz/dsa-next/client/styles/globals.css                                  | CSS              |         41 |          2 |         10 |         53 |
+| /Users/talhaoz/dsa-next/client/tailwind.config.js                                  | JavaScript       |         11 |          0 |          1 |         12 |
+| /Users/talhaoz/dsa-next/client/themes/Layout.jsx                                   | JavaScript React |         71 |          0 |         11 |         82 |
+| /Users/talhaoz/dsa-next/client/tools/cartTools.js                                  | JavaScript       |         10 |          0 |          3 |         13 |
+| /Users/talhaoz/dsa-next/client/tools/componentComposer.js                          | JavaScript       |         51 |          3 |          2 |         56 |
+| /Users/talhaoz/dsa-next/client/user.json                                           | JSON             |         15 |          0 |          1 |         16 |
+| /Users/talhaoz/dsa-next/package-lock.json                                          | JSON             |      1,575 |          0 |          1 |      1,576 |
+| /Users/talhaoz/dsa-next/package.json                                               | JSON             |         21 |          0 |          1 |         22 |
+| /Users/talhaoz/dsa-next/schemas/Address.js                                         | JavaScript       |         37 |          0 |          5 |         42 |
+| /Users/talhaoz/dsa-next/schemas/Billing.js                                         | JavaScript       |         41 |          0 |          5 |         46 |
+| /Users/talhaoz/dsa-next/schemas/Category.js                                        | JavaScript       |         13 |          0 |          3 |         16 |
+| /Users/talhaoz/dsa-next/schemas/DeliveryMethod.js                                  | JavaScript       |         28 |          0 |          5 |         33 |
+| /Users/talhaoz/dsa-next/schemas/Order.js                                           | JavaScript       |         76 |          0 |          6 |         82 |
+| /Users/talhaoz/dsa-next/schemas/PaymentMethod.js                                   | JavaScript       |         24 |          0 |          5 |         29 |
+| /Users/talhaoz/dsa-next/schemas/Product.js                                         | JavaScript       |         40 |          0 |          5 |         45 |
+| /Users/talhaoz/dsa-next/schemas/User.js                                            | JavaScript       |         39 |          0 |          5 |         44 |
+| /Users/talhaoz/dsa-next/server.js                                                  | JavaScript       |         32 |          6 |         13 |         51 |
+| Total                                                                              |                  |      8,433 |        168 |        524 |      9,125 |
++------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
