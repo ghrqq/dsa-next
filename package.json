@@ -1,18 +1,21 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
+  "name": "dsa-nxt",
+  "version": "1.0.0",
+  "description": "DSA-Auto backend",
+  "main": "server.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "Theo OZ",
+  "license": "ISC",
   "dependencies": {
-    "autoprefixer": "^10.2.4",
-    "next": "10.0.6",
-    "postcss": "^8.2.5",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "tailwindcss": "^2.0.2"
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.17",
+    "nodemon": "^2.0.7"
   }
 }
