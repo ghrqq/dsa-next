@@ -31,6 +31,18 @@ app.use(
   })
 );
 
+const mongoose = require("mongoose");
+mongoose.connect(process.env.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", () => {
+  console.log("Mongo DB is connected.");
+});
+
 app.get("/", (req, res) => res.send("Hello Again!"));
 
 app.listen(process.env.PORT, () =>
