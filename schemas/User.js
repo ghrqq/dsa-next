@@ -10,6 +10,10 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  password: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
@@ -37,6 +41,9 @@ const UserSchema = new Schema({
   agent: {
     type: String,
     default: 1,
+  },
+  token: {
+    type: String,
   },
 });
 

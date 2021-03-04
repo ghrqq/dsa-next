@@ -4,6 +4,9 @@ require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
+const mongoose = require("mongoose");
+const { register, login, logout } = require("./routes/general/gen_userroutes");
+
 const app = express();
 
 app.use(cookieParser());
@@ -25,8 +28,6 @@ app.use(
   })
 );
 
-const mongoose = require("mongoose");
-const { register } = require("./routes/general/gen_userroutes");
 mongoose.connect(process.env.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -44,6 +45,8 @@ app.get("/", (req, res) => res.send("Hello Again!"));
 // // General User - General user routes like login, register, token renewal etc.
 
 app.post("/register", async (req, res) => register(req, res));
+app.post("/login", async (req, res) => login(req, res));
+app.post("/logout", async (req, res) => logout(req, res));
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is running on port ${process.env.PORT}`)
