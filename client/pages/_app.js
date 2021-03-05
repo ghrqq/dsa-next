@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 // DEV DEP
 import userJSON from "../user.json";
@@ -21,6 +22,19 @@ function MyApp({ Component, pageProps }) {
     setuser(userJSON[0]);
     setlang(userJSON[0].lang);
     setcurrency(userJSON[0].currency);
+  }, []);
+
+  useEffect(() => {
+    axios({
+      method: "post",
+      url: "http://localhost:4000/refresh_token",
+      withCredentials: true,
+    }).then((res) => {
+      if (res.status === 200) {
+        setisLoggedIn(true);
+        setuser(res.data.user);
+      }
+    });
   }, []);
 
   const [config, setconfig] = useState({

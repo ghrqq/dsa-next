@@ -23,10 +23,11 @@ const createRefreshToken = (user_id) => {
   );
 };
 
-const sendAccessToken = (res, req, accesstoken) => {
+const sendAccessToken = (res, req, accesstoken, user) => {
   res.send({
     accesstoken,
     email: req.body.email,
+    user,
   });
 };
 
@@ -38,7 +39,7 @@ const sendRefreshToken = (res, refreshtoken) => {
   });
 };
 
-const sendTokens = (res, refreshtoken, accesstoken) => {
+const sendTokens = (res, refreshtoken, accesstoken, user) => {
   res
     .cookie("refreshtoken", refreshtoken, {
       //Change the token name
@@ -47,6 +48,7 @@ const sendTokens = (res, refreshtoken, accesstoken) => {
     })
     .send({
       accesstoken,
+      user,
     });
 };
 

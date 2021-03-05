@@ -64,10 +64,10 @@ const login = async (req, res) => {
       user.token = refreshtoken;
 
       const updatedUser = await user.save();
-
+      user.password = true;
       // 5. Send tokens. Refresh token as a cookie and accesstoken as a regular response
       sendRefreshToken(res, refreshtoken);
-      sendAccessToken(res, req, accesstoken);
+      sendAccessToken(res, req, accesstoken, user);
 
       //   res.status(200).send({ msg: `Welcome back, ${user.name}!` });
     } else {

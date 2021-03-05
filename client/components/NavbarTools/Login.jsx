@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../pages/_app";
+import axios from "axios";
 
 export default function Login() {
   const [user, setuser, isLoggedIn, setisLoggedIn] = useContext(UserContext);
@@ -14,6 +15,20 @@ export default function Login() {
     temp[nam] = val;
 
     setstate(temp);
+  };
+
+  const handleSubmit = () => {
+    axios({
+      method: "post",
+      url: "http://localhost:4000/login",
+      data: state,
+      withCredentials: true,
+    }).then((res) => {
+      if (res.status === 200) {
+        setisLoggedIn(true);
+        setuser(res.data.user);
+      }
+    });
   };
 
   return (
@@ -36,7 +51,8 @@ export default function Login() {
       />
       <button
         className="text-green-400  ml-2 text-2xl"
-        onClick={() => setisLoggedIn(!isLoggedIn)}
+        // onClick={() => setisLoggedIn(!isLoggedIn)}
+        onClick={() => handleSubmit()}
       >
         LOGIN
       </button>
