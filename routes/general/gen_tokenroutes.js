@@ -11,27 +11,54 @@ const {
 const getNewAccessToken = async (req, res) => {
   const token = req.cookies.refreshtoken;
   if (!token)
-    return res.status(400).send({
+    return res.status(204).send({
       accesstoken: "",
       msg: "No token!",
+      // user: {
+      //   currency: "UAH",
+      //   lang: "en",
+      //   sale: 0.08,
+      // },
     });
 
   try {
     const payload = await verify(token, process.env.REFRESH_TOKEN_SECRET);
     if (!payload) {
-      res
-        .status(400)
-        .send({ msg: "You need to login again.", accesstoken: "" });
+      res.status(400).send({
+        msg: "You need to login again.",
+        accesstoken: "",
+        user: {
+          currency: "UAH",
+          lang: "en",
+          sale: 0.08,
+        },
+      });
     }
 
     const user = await User.findById(payload.user_id);
     if (!user) {
-      res.status(400).send({ msg: "User not found.", accesstoken: "" });
+      res.status(400).send({
+        msg: "User not found.",
+        accesstoken: "",
+        user: {
+          currency: "UAH",
+          lang: "en",
+          sale: 0.08,
+        },
+      });
     }
 
     if (user.token !== token) {
       console.log("Not equal: ", token, user.token);
-      res.status(400).send({ accesstoken: "", msg: "Shit happens" });
+      res.status(400).send({
+        accesstoken: "",
+        msg: "Shit happens",
+        user: {
+          currency: "UAH",
+          lang: "en",
+          sale: 0.08,
+        },
+      });
       return;
     }
 

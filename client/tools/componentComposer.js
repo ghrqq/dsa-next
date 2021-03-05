@@ -26,7 +26,7 @@ export default function componentComposer(val) {
       </div>
     );
   }
-  if (val === 2) {
+  if (val === "0") {
     // Customer
     return (
       <div className="flex flex-row flex-wrap justify-start items-center">

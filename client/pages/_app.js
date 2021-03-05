@@ -15,14 +15,14 @@ function MyApp({ Component, pageProps }) {
   const [lang, setlang] = useState("en");
   const [currency, setcurrency] = useState("USD");
   const [rate, setrate] = useState(23.8);
-  const [user, setuser] = useState({});
+  const [user, setuser] = useState({ lang: "en", currency: "UAH", sale: 0.08 });
   const [isLoggedIn, setisLoggedIn] = useState(false);
 
-  useEffect(() => {
-    setuser(userJSON[0]);
-    setlang(userJSON[0].lang);
-    setcurrency(userJSON[0].currency);
-  }, []);
+  // useEffect(() => {
+  //   setuser(userJSON[0]);
+  //   setlang(userJSON[0].lang);
+  //   setcurrency(userJSON[0].currency);
+  // }, []);
 
   useEffect(() => {
     axios({
@@ -33,13 +33,16 @@ function MyApp({ Component, pageProps }) {
       if (res.status === 200) {
         setisLoggedIn(true);
         setuser(res.data.user);
+        return;
       }
+
+      return;
     });
   }, []);
 
   const [config, setconfig] = useState({
     lang: user.lang ? user.lang : "en",
-    currency: user.currency ? user.currency : "USD",
+    currency: user.currency ? user.currency : "UAH",
     currencyRate: 23.8,
   });
 

@@ -41,7 +41,7 @@ export default function Layout({ children }) {
       url: "http://localhost:4000/logout",
       withCredentials: true,
     });
-    setuser({});
+    setuser({ lang: "en", currency: "UAH", sale: 0.08 });
     setisLoggedIn(false);
     setisUserMenuHidden(true);
     router.push("/");
