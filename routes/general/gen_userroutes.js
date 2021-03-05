@@ -49,7 +49,7 @@ const login = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-    console.log(user);
+
     if (!user) {
       res.status(400).send({ msg: "User not found." });
     }
@@ -64,7 +64,6 @@ const login = async (req, res) => {
       user.token = refreshtoken;
 
       const updatedUser = await user.save();
-      console.log(updatedUser, "updated shit");
 
       // 5. Send tokens. Refresh token as a cookie and accesstoken as a regular response
       sendRefreshToken(res, refreshtoken);

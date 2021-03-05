@@ -38,9 +38,22 @@ const sendRefreshToken = (res, refreshtoken) => {
   });
 };
 
+const sendTokens = (res, refreshtoken, accesstoken) => {
+  res
+    .cookie("refreshtoken", refreshtoken, {
+      //Change the token name
+      httpOnly: true,
+      path: "/refresh_token", //Change the path name accordingly
+    })
+    .send({
+      accesstoken,
+    });
+};
+
 module.exports = {
   createAccessToken,
   createRefreshToken,
   sendRefreshToken,
   sendAccessToken,
+  sendTokens,
 };
