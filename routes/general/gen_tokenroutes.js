@@ -73,6 +73,7 @@ const getNewAccessToken = async (req, res) => {
     }
 
     user.password = true;
+    user.token = accesstoken;
     // If everything ok, send new refreshtoken and accesstoken
     return sendTokens(res, refreshtoken, accesstoken, user);
   } catch (error) {

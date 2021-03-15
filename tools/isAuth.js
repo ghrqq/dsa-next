@@ -7,8 +7,8 @@ const isAuth = (req) => {
   // 'Bearer actualtoken'
   const token = authorization.split(" ")[1];
   console.log("token: ", token);
-  const { userId } = verify(token, process.env.ACCESS_TOKEN_SECRET);
-  return userId;
+  const { user_id } = verify(token, process.env.ACCESS_TOKEN_SECRET);
+  return user_id;
 };
 
 module.exports = {

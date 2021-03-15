@@ -63,6 +63,7 @@ const login = async (req, res) => {
 
       const updatedUser = await user.save();
       user.password = true;
+      user.token = accesstoken;
       // 5. Send tokens. Refresh token as a cookie and accesstoken as a regular response
       sendRefreshToken(res, refreshtoken);
       sendAccessToken(res, req, accesstoken, user);
