@@ -81,7 +81,7 @@ export default function Layout({ children }) {
         </div>
       </div>
       <div className={isRegisterHidden ? "hidden" : "no-print"}>
-        <Register />
+        <Register regHandler={regClickHandler} />
       </div>
 
       <div className={isCartHidden ? "hidden" : "no-print"}>

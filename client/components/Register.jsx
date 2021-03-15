@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
 
-export default function Register() {
+export default function Register({ regHandler }) {
   const [state, setstate] = useState({});
   const [isAgreed, setisAgreed] = useState(true);
   const [isMailsAllowed, setisMailsAllowed] = useState(true);
@@ -28,6 +29,20 @@ export default function Register() {
     }
   };
 
+  const handleSubmit = () => {
+    axios({
+      method: "post",
+      url: "http://localhost:4000/register",
+      data: state,
+    }).then((res) => {
+      if (res.status === 200) {
+        window.alert(res.data.msg);
+        regHandler();
+        setstate({});
+      }
+    });
+  };
+
   return (
     <div className="w-full h-auto bg-yellow-300 ">
       <div className="flex flex-row flex-wrap sm:flex-nowrap justify-center items-stretch space-x-4">
@@ -51,9 +66,9 @@ export default function Register() {
           <input
             type="text"
             className="w-full mx-auto my-2 focus:outline-none focus:shadow-inner shadow-2xl rounded-3xl p-2 text-gray-900"
-            placeholder="mail"
-            value={state.mail}
-            name="mail"
+            placeholder="email"
+            value={state.email}
+            name="email"
             onChange={changeHandler}
           />
           <input
@@ -141,13 +156,14 @@ export default function Register() {
               <button
                 className="w-full bg-green-400 rounded-3xl text-gray-100 text-xl px-2"
                 disabled={isAgreed}
+                onClick={handleSubmit}
               >
                 REGISTER
               </button>
             </div>
           </div>
         </div>
-        <div className="w-4/5 sm:w-3/5 md:w-2/5 lg:w-1/3 ">
+        {/* <div className="w-4/5 sm:w-3/5 md:w-2/5 lg:w-1/3 ">
           <input
             type="text"
             className="w-full mx-auto my-2 focus:outline-none focus:shadow-inner shadow-2xl rounded-3xl p-2 text-gray-900"
@@ -182,7 +198,7 @@ export default function Register() {
             value={state.address}
             onChange={changeHandler}
           ></textarea>
-        </div>
+        </div> */}
       </div>
     </div>
   );

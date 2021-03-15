@@ -47,7 +47,7 @@ export default function Navbar({
             <div className="flex flex-row justify-between items-center flex-wrap ">
               <Login />
               <div className="cursor-pointer inline-block" onClick={regHandler}>
-                <Register />
+                <Register closer={regHandler} />
               </div>
             </div>
           )}

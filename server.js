@@ -7,6 +7,11 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const { register, login, logout } = require("./routes/general/gen_userroutes");
 const { getNewAccessToken } = require("./routes/general/gen_tokenroutes");
+const {
+  getAddresses,
+  createNewAddress,
+  changeAddress,
+} = require("./routes/general/gen_addressroutes");
 
 const app = express();
 
@@ -52,6 +57,13 @@ app.post("/logout", async (req, res) => logout(req, res));
 // // Token Routes - Get new access token with refresh token
 
 app.post("/refresh_token", async (req, res) => getNewAccessToken(req, res));
+
+// // User Address Routes
+app.post("/user/getaddresses", async (req, res) => getAddresses(req, res));
+app.post("/user/createnewaddress", async (req, res) =>
+  createNewAddress(req, res)
+);
+app.post("/user/changeaddress", async (req, res) => changeAddress(req, res));
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is running on port ${process.env.PORT}`)

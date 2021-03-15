@@ -34,11 +34,9 @@ const register = async (req, res) => {
       res.status(200).send({
         msg: `Dear ${createUser.name}, you have been registered successfuly. Please login. Password is: ${createUser.password}`,
       });
-    } else {
-      res.status(400).send({ msg: "Something went wrong." });
     }
   } catch (error) {
-    console.log(error.message, "catched");
+    res.status(400).send({ msg: error.message });
   }
 };
 
@@ -68,6 +66,7 @@ const login = async (req, res) => {
       // 5. Send tokens. Refresh token as a cookie and accesstoken as a regular response
       sendRefreshToken(res, refreshtoken);
       sendAccessToken(res, req, accesstoken, user);
+      console.log("acccess token: ", accesstoken);
 
       //   res.status(200).send({ msg: `Welcome back, ${user.name}!` });
     } else {

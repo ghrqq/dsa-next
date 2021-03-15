@@ -42,7 +42,7 @@ export default function CategoryBox({ footer }) {
               >
                 {cat.children.map((child) => (
                   <li
-                    key={child}
+                    key={cat + child}
                     className="inline-block p-1 border text-xs font-normal rounded-2xl"
                   >
                     <div>
