@@ -7,7 +7,8 @@ const createNewAddress = async (req, res) => {
   const { alias, city, name, postcode, address, primary, country } = req.body;
   try {
     const userId = await isAuth(req);
-    console.log("ID: ", userId)
+
+
     if (userId === null) {
       res.status(400).send({ msg: "You need to login." });
 
@@ -25,8 +26,9 @@ const createNewAddress = async (req, res) => {
     });
 
     const createAddress = await newAddress.save();
+
     if (createAddress) {
-      res.status(200).send({ msg: "Address created successfuly." });
+      res.status(200).send({ msg: "Address created successfuly.", id: createAddress._id });
     }
   } catch (error) {
     console.log(error);
@@ -36,7 +38,7 @@ const createNewAddress = async (req, res) => {
 const getAddresses = async (req, res) => {
   try {
     const userId = isAuth(req);
-    console.log("Shit id: ", userId)
+
     if (userId === null) {
       res.status(400).send({ msg: "You need to login." });
     }
@@ -65,24 +67,62 @@ const changeAddress = async (req, res) => {
     if (userId === null) {
       res.status(400).send({ msg: "You need to login." });
     }
+    if (primary) {
+      const setPrimaries = await Address.updateMany({ user_id: userId }, { primary: false });
 
-    const singleAddress = await Address.find({ user_id: userId, _id: id });
+
+    }
+
+
+
+    const singleAddress = await Address.updateOne({ user_id: userId, _id: id },
+      req.body
+
+    );
     if (!singleAddress) {
       res.status(400).send({ msg: "No address has been found." });
     }
 
-    const keys = Object.keys(req.body);
+    res.status(200).send({ msg: "Address updated successfuly." });
 
-    const updated = keys.map((item) => (singleAddress[item] = req.body[item]));
 
-    console.log(updated);
+
+
+
+
   } catch (error) {
     console.log(error);
   }
 };
 
+const deleteAddress = async (req, res) => {
+  const { id } = req.body;
+  try {
+    const userId = isAuth(req);
+    if (userId === null) {
+      res.status(400).send({ msg: "You need to login." });
+    }
+    const del = await Address.deleteOne({ _id: id, user_id: userId });
+
+    if (del) {
+      res.status(200).send({ msg: "Address has been deleted succesfuly.", id })
+    } else {
+      res.stauts(400).send({ msg: "Something went wrong while deleting the address. Refresh the page and try again." })
+    }
+
+
+
+
+
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   createNewAddress,
   getAddresses,
   changeAddress,
+  deleteAddress,
 };

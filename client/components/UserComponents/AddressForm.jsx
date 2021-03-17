@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function AddressForm({ item, tkn }) {
-  const [state, setstate] = useState({});
+export default function AddressForm({ item, tkn, setter }) {
+  const [state, setstate] = useState({ id: item._id });
 
   const changeHandler = (e) => {
     let val = e.target.value;
@@ -21,7 +21,38 @@ export default function AddressForm({ item, tkn }) {
       headers: { authorization: `Bearer ${tkn}` },
       data: state,
     }).then((res) => {
-      console.log(res)
+      if (res.status === 200) {
+        let temp = state;
+        temp._id = res.data.id;
+        setstate(temp);
+        setter("add", temp);
+      }
+
+    });
+  }
+
+  const primaryHandler = () => {
+    const temp = state;
+    if (state.primary === undefined) {
+      temp.primary = true;
+      setstate(temp);
+    } else {
+      temp.primary = !state.primary;
+      setstate(temp);
+    }
+  }
+
+  const handleChangeSubmit = () => {
+    axios({
+      method: "post",
+      url: "http://localhost:4000/user/changeaddress",
+      headers: { authorization: `Bearer ${tkn}` },
+      data: state,
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log(res.data) // TODO: "Set the response handling and think about seperating primary switch."
+      }
+
     });
   }
 
@@ -77,12 +108,15 @@ export default function AddressForm({ item, tkn }) {
         value={state.address}
         onChange={changeHandler}
       ></textarea>
-      <button className="w-1/2 text-center py-2 bg-purple-700 text-gray-50 rounded-3xl mx-auto my-2 block">
+      <button className="w-1/2 text-center py-2 bg-purple-700 text-gray-50 rounded-3xl mx-auto my-2 block" onClick={primaryHandler}  >
         Set as Primary
       </button>
-      <button className="w-full text-center py-2 bg-green-400 text-gray-50 rounded-3xl my-2" onClick={() => handleSubmit()}>
+      {item._id ? (<button className="w-full text-center py-2 bg-green-400 text-gray-50 rounded-3xl my-2" onClick={() => handleChangeSubmit()}>
         Save
-      </button>
+      </button>) : (
+          <button className="w-full text-center py-2 bg-green-400 text-gray-50 rounded-3xl my-2" onClick={() => handleSubmit()}>
+            Save
+          </button>)}
     </div>
   );
 }

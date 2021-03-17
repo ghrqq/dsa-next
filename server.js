@@ -11,6 +11,7 @@ const {
   getAddresses,
   createNewAddress,
   changeAddress,
+  deleteAddress,
 } = require("./routes/general/gen_addressroutes");
 
 const app = express();
@@ -64,6 +65,7 @@ app.post("/user/createnewaddress", async (req, res) =>
   createNewAddress(req, res)
 );
 app.post("/user/changeaddress", async (req, res) => changeAddress(req, res));
+app.post("/user/deleteaddress", async (req, res) => deleteAddress(req, res));
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is running on port ${process.env.PORT}`)

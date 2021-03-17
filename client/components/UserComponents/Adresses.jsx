@@ -10,6 +10,7 @@ export default function Adresses({ use }) {
   const [user, setuser, isLoggedIn, setisLoggedIn] = useContext(UserContext);
   const [addresses, setaddresses] = useState([]);
   const [isAddressesLoading, setisAddressesLoading] = useState(false);
+  const [count, setcount] = useState(0)
 
   useEffect(() => {
     axios({
@@ -23,6 +24,46 @@ export default function Adresses({ use }) {
     });
   }, [user]);
 
+  const handleDelete = (val) => {
+    axios({
+      method: "post",
+      url: "http://localhost:4000/user/deleteaddress",
+      headers: { authorization: `Bearer ${user.token}` },
+      data: {
+        id: val
+      }
+
+    }).then((res) => {
+      if (res.status === 200) {
+
+        let temp = addresses.filter(i => i._id !== res.data.id)
+        setaddresses(temp);
+
+      } else {
+        console.log(res.data.msg)
+      }
+
+    })
+  }
+
+  const addressSetter = (type, item) => {
+    if (type === "del") {
+      const temp = addresses;
+      const items = temp.filter(i => i._id !== item._id);
+      setaddresses(items);
+
+    } else {
+      const temp = addresses;
+      temp.push(item);
+      setaddresses(temp);
+      setaddressOnFocus("");
+
+    }
+
+
+
+  }
+
   const addressProvider = (val) => {
     if (val === addressOnFocus) {
       setaddressOnFocus("");
@@ -30,6 +71,8 @@ export default function Adresses({ use }) {
     }
     setaddressOnFocus(val);
   };
+
+
   return (
     <div>
       <div className="w-full text-center border rounded-3xl py-2 text-xl font-semibold flex flex-row justify-around items-center my-4">
@@ -65,24 +108,25 @@ export default function Adresses({ use }) {
                     <div className="w-full bg-red-400 overflow-hidden rounded-r-3xl ">
                       <button
                         className="bg-yellow-400 p-2 text-gray-50 w-1/2"
-                        onClick={() => addressProvider(item.id)}
+                        onClick={() => addressProvider(item._id)}
                       >
-                        {addressOnFocus === item.id ? "CANCEL" : "EDIT"}
+                        {addressOnFocus === item._id ? "CANCEL" : "EDIT"}
                       </button>
                       {use ? (
                         <button className="bg-blue-400 p-2 text-gray-50 pr-4 w-1/2 overflow-hidden rounded-r-3xl">
                           USE
                         </button>
                       ) : (
-                          <button className="bg-red-400 p-2 text-gray-50 pr-4 w-1/2 overflow-hidden rounded-r-3xl">
+                          <button className="bg-red-400 p-2 text-gray-50 pr-4 w-1/2 overflow-hidden rounded-r-3xl" onClick={() => handleDelete(item._id)} >
                             DELETE
                           </button>
                         )}
                     </div>
                   </div>
                 </div>
-                <div className={addressOnFocus === item.id ? null : "hidden"}>
-                  <AddressForm item={item} tkn={user.token} />
+                <div className={addressOnFocus === item._id ? null : "hidden"}>
+                  <AddressForm item={item} tkn={user.token}
+                    setter={addressSetter} />
                 </div>
               </div>
             ))
@@ -107,6 +151,7 @@ export default function Adresses({ use }) {
 
           }}
           tkn={user.token}
+          setter={addressSetter}
         />
       </div>
     </div>
