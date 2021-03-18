@@ -1,6 +1,6 @@
-const User = require("../../schemas/User");
+
 const Address = require("../../schemas/Address");
-const Billing = require("../../schemas/Billing");
+
 const { isAuth } = require("../../tools/isAuth");
 
 const createNewAddress = async (req, res) => {
@@ -13,6 +13,12 @@ const createNewAddress = async (req, res) => {
       res.status(400).send({ msg: "You need to login." });
 
     }
+    if (primary === true) {
+      const setPrimaries = await Address.updateMany({ user_id: userId }, { primary: false });
+
+
+    }
+
 
     const newAddress = new Address({
       alias,
@@ -67,7 +73,7 @@ const changeAddress = async (req, res) => {
     if (userId === null) {
       res.status(400).send({ msg: "You need to login." });
     }
-    if (primary) {
+    if (primary === true) {
       const setPrimaries = await Address.updateMany({ user_id: userId }, { primary: false });
 
 

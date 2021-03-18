@@ -13,6 +13,12 @@ const {
   changeAddress,
   deleteAddress,
 } = require("./routes/general/gen_addressroutes");
+const {
+  getBillings,
+  createNewBilling,
+  changeBilling,
+  deleteBilling,
+} = require("./routes/general/gen_billingroutes");
 
 const app = express();
 
@@ -66,6 +72,17 @@ app.post("/user/createnewaddress", async (req, res) =>
 );
 app.post("/user/changeaddress", async (req, res) => changeAddress(req, res));
 app.post("/user/deleteaddress", async (req, res) => deleteAddress(req, res));
+
+// // User Billing Info Routes
+app.post("/user/getbillinginfo", async (req, res) => getBillings(req, res));
+app.post("/user/createnewbilling", async (req, res) =>
+  createNewBilling(req, res)
+);
+app.post("/user/changebilling", async (req, res) => changeBilling(req, res));
+app.post("/user/deletebilling", async (req, res) => deleteBilling(req, res));
+
+
+
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is running on port ${process.env.PORT}`)
