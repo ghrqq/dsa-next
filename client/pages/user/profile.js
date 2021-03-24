@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Layout from "../../themes/Layout";
 import { UserContext } from "../_app";
+import axios from "axios";
 
 import Addresses from "../../components/UserComponents/Adresses";
 import BillingInfos from "../../components/UserComponents/BillingInfos";
@@ -54,6 +55,20 @@ export default function profile() {
     }
   };
 
+  const handleSubmit = () => {
+    axios({
+      method: "post",
+      url: "http://localhost:4000/user/updateuser",
+      headers: { authorization: `Bearer ${user.token}` },
+      data: state,
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log(res.data.msg)
+      }
+    })
+
+  }
+
   return (
     <Layout>
       <div className="flex flex-row flex-wrap sm:flex-nowrap justify-center items-stretch space-x-4 my-4">
@@ -91,16 +106,16 @@ export default function profile() {
             onChange={changeHandler}
             onFocus={() => setshowConfirm(true)}
           />
-          <div className={!showConfirm ? "hidden" : null}> 
-<input
-  type="text"
-  className="w-full mx-auto my-2 focus:outline-none focus:shadow-inner shadow-2xl rounded-3xl py-2 px-4 text-gray-900 "
-  placeholder="Confirm Your Password"
-  //TODO Add confirmation logic here.
-  name="password"
-  value={state.passwordConfirm}
-  onChange={changeHandler}
-/> </div>
+          <div className={!showConfirm ? "hidden" : null}>
+            <input
+              type="text"
+              className="w-full mx-auto my-2 focus:outline-none focus:shadow-inner shadow-2xl rounded-3xl py-2 px-4 text-gray-900 "
+              placeholder="Confirm Your Password"
+              //TODO Add confirmation logic here.
+              name="password"
+              value={state.passwordConfirm}
+              onChange={changeHandler}
+            /> </div>
           <div className="flex flex-row flex-wrap justify-center items-center ">
             <div className="my-2 text-center w-1/2">
               Preferred Language: <br />
@@ -164,7 +179,7 @@ export default function profile() {
             </div>
           </div>
           <div className="my-2 text-center w-1/2 mx-auto">
-            <button className="w-full bg-green-400 rounded-3xl text-gray-100 text-xl px-2">
+            <button className="w-full bg-green-400 rounded-3xl text-gray-100 text-xl px-2" onClick={handleSubmit}>
               Save Changes
             </button>
           </div>

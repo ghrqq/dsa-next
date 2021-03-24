@@ -6,6 +6,7 @@ const {
   sendRefreshToken,
   sendAccessToken,
 } = require("../../tools/tokens");
+const { isAuth } = require("../../tools/isAuth");
 
 const register = async (req, res) => {
   const { name, surname, email, lang, currency, password } = req.body;
@@ -85,8 +86,41 @@ const logout = async (req, res) => {
   });
 };
 
+const updateUser = async (req, res) => {
+  const {
+    name,
+    surname,
+    password,
+    email,
+    lang,
+    currency,
+    isMailsAllowed,
+  } = req.body;
+  try {
+    const userId = isAuth(req);
+    if (userId === null) {
+      res.status(400).send({ msg: "You need to login." });
+    }
+    if (isMailsAllowed === true) {
+      // TODO: Mail list add.
+    }
+
+    delete req.body.isMailsAllowed;
+
+    const singleUser = await User.updateOne({ _id: userId }, req.body);
+    delete singleUser.token;
+
+    if (singleUser) {
+      res.status(200).send({ msg: "User updated succesfuly." });
+    }
+  } catch (error) {
+    console.log(error.msg);
+  }
+};
+
 module.exports = {
   register,
   login,
   logout,
+  updateUser,
 };

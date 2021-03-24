@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const mongoose = require("mongoose");
-const { register, login, logout } = require("./routes/general/gen_userroutes");
+const { register, login, logout, updateUser } = require("./routes/general/gen_userroutes");
 const { getNewAccessToken } = require("./routes/general/gen_tokenroutes");
 const {
   getAddresses,
@@ -60,6 +60,7 @@ app.get("/", (req, res) => res.send("Hello Again!"));
 app.post("/register", async (req, res) => register(req, res));
 app.post("/login", async (req, res) => login(req, res));
 app.post("/logout", async (req, res) => logout(req, res));
+app.post("/user/updateuser", async (req, res) => updateUser(req, res));
 
 // // Token Routes - Get new access token with refresh token
 
