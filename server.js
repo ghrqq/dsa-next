@@ -5,7 +5,12 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const mongoose = require("mongoose");
-const { register, login, logout, updateUser } = require("./routes/general/gen_userroutes");
+const {
+  register,
+  login,
+  logout,
+  updateUser,
+} = require("./routes/general/gen_userroutes");
 const { getNewAccessToken } = require("./routes/general/gen_tokenroutes");
 const {
   getAddresses,
@@ -19,6 +24,7 @@ const {
   changeBilling,
   deleteBilling,
 } = require("./routes/general/gen_billingroutes");
+const { getCustomerList } = require("./routes/manager/man_customerroutes");
 
 const app = express();
 
@@ -82,8 +88,8 @@ app.post("/user/createnewbilling", async (req, res) =>
 app.post("/user/changebilling", async (req, res) => changeBilling(req, res));
 app.post("/user/deletebilling", async (req, res) => deleteBilling(req, res));
 
-
-
+// // Manager - Customer Routes
+app.post("/man/getcustomers", async (req, res) => getCustomerList(req, res));
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is running on port ${process.env.PORT}`)

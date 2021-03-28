@@ -9,7 +9,7 @@ import BillingInfos from "../../components/UserComponents/BillingInfos";
 export default function profile() {
   const [user, setuser, isLoggedIn, setisLoggedIn] = useContext(UserContext);
   const [state, setstate] = useState({});
-  const [showConfirm, setshowConfirm] = useState(false)
+  const [showConfirm, setshowConfirm] = useState(false);
 
   const [isMailsAllowed, setisMailsAllowed] = useState(true);
 
@@ -39,7 +39,7 @@ export default function profile() {
     temp[nam] = val;
 
     console.log(temp);
-    setshowConfirm(true)
+    setshowConfirm(true);
     setstate(temp);
   };
 
@@ -63,11 +63,12 @@ export default function profile() {
       data: state,
     }).then((res) => {
       if (res.status === 200) {
-        console.log(res.data.msg)
+        console.log(res.data.msg);
+        setuser(res.data.user);
+        setstate({});
       }
-    })
-
-  }
+    });
+  };
 
   return (
     <Layout>
@@ -115,7 +116,8 @@ export default function profile() {
               name="password"
               value={state.passwordConfirm}
               onChange={changeHandler}
-            /> </div>
+            />{" "}
+          </div>
           <div className="flex flex-row flex-wrap justify-center items-center ">
             <div className="my-2 text-center w-1/2">
               Preferred Language: <br />
@@ -179,7 +181,10 @@ export default function profile() {
             </div>
           </div>
           <div className="my-2 text-center w-1/2 mx-auto">
-            <button className="w-full bg-green-400 rounded-3xl text-gray-100 text-xl px-2" onClick={handleSubmit}>
+            <button
+              className="w-full bg-green-400 rounded-3xl text-gray-100 text-xl px-2"
+              onClick={handleSubmit}
+            >
               Save Changes
             </button>
           </div>

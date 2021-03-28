@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default function componentComposer(val) {
-  if (val === 1) {
+  if (val === "1") {
     //Admin
     return (
       <div className="flex flex-row flex-wrap justify-start items-center">
@@ -39,7 +39,7 @@ export default function componentComposer(val) {
       </div>
     );
   }
-  if (val === 3) {
+  if (val === "2") {
     // Employee
     return (
       <div className="flex flex-row flex-wrap justify-start items-center">
